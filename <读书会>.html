@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>芝士读书会</title>
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background-color: #fffaf0;
+  color: #5a4a3b;
+  line-height: 1.6;
+}
+
+header {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #d4a94f;
+  background: linear-gradient(180deg, #fff9e6 0%, #fffaf0 100%);
+}
+
+.section {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-bottom: 30px;
+  border: 1px solid #f5e8c7;
+}
+
+.card h2 {
+  margin: 0 0 15px 0;
+  color: #d4a94f;
+  font-size: 22px;
+}
+
+.card p {
+  margin: 10px 0;
+  color: #7a6a5b;
+}
+
+.card p:first-of-type {
+  font-style: italic;
+}
+
+h3 {
+  color: #8b7355;
+  margin: 30px 0 15px 0;
+  font-size: 20px;
+}
+
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 15px 5px;
+  margin-bottom: 20px;
+}
+
+.scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #f5e8c7;
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #d4a94f;
+  border-radius: 4px;
+}
+
+.book-item {
+  flex: 0 0 auto;
+  text-align: center;
+  color: #5a4a3b;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.book-item:hover {
+  transform: translateY(-5px);
+}
+
+.book-cover {
+  width: 180px;
+  height: 260px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f5e8c7 0%, #ead5a8 100%);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #8b7355;
+  text-align: center;
+  padding: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.book-cover img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.book-cover small {
+  font-size: 12px;
+  font-weight: normal;
+  margin-top: 8px;
+}
+
+.book-title {
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status-badge {
+  display: inline-block;
+  background-color: #d4a94f;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-top: 5px;
+}
+</style>
+</head>
+<body>
+
+<header>🧀 芝士读书会</header>
+
+<div class="section">
+  <div class="card">
+    <h2>📘 本期推荐：加缪《局外人》</h2>
+    <p>"在一个阳光刺眼的午后，他扣动了扳机——命运因此分岔。"</p>
+    <p>探讨存在主义哲学的经典之作，讲述一个"局外人"如何面对荒诞的世界。</p>
+  </div>
+
+  <h3>📚 往期书单</h3>
+  <div class="scroll-container">
+    <div class="book-item">
+      <div class="book-cover">
+        <img src="images/L‘ Etranger.webp" alt="局外人封面">
+      </div>
+      <div class="book-title">局外人</div>
+      <span class="status-badge">本期</span>
+    </div>
+    
+    <div class="book-item">
+      <div class="book-cover">
+        敬请期待
+        <small>即将推出</small>
+      </div>
+      <div class="book-title">暂未待续</div>
+    </div>
+    
+    <div class="book-item">
+      <div class="book-cover">
+        敬请期待
+        <small>即将推出</small>
+      </div>
+      <div class="book-title">暂未待续</div>
+    </div>
+    
+    <div class="book-item">
+      <div class="book-cover">
+        敬请期待
+        <small>即将推出</small>
+      </div>
+      <div class="book-title">暂未待续</div>
+    </div>
+    
+    <div class="book-item">
+      <div class="book-cover">
+        敬请期待
+        <small>即将推出</small>
+      </div>
+      <div class="book-title">暂未待续</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💬 最新讨论</h2>
+    <p>下次讨论时间：2025年10月25日 周六上午 9:00</p>
+    <p>主题：《局外人》中的荒诞哲学与当代生活</p>
+  </div>
+</div>
+
+</body>
+</html>

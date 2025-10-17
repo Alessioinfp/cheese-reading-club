@@ -20,11 +20,35 @@ body {
 
 header {
   text-align: center;
-  padding: 40px 20px;
+  padding: 50px 20px 40px 20px;
+  background: linear-gradient(180deg, #ffd700 0%, #fff9e6 50%, #fffaf0 100%);
+  position: relative;
+}
+
+.logo-container {
+  margin-bottom: 15px;
+}
+
+.logo {
+  width: 230px;
+  height: 180px;
+  margin: 0 auto;
+  display: block;
+  opacity: 0.95;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.site-title {
   font-size: 32px;
   font-weight: bold;
-  color: #d4a94f;
-  background: linear-gradient(180deg, #fff9e6 0%, #fffaf0 100%);
+  color: #5a4a3b;
+  margin-top: 10px;
+  text-shadow: 0 2px 4px rgba(255,255,255,0.5);
 }
 
 .section {
@@ -151,7 +175,12 @@ h3 {
 </head>
 <body>
 
-<header>🧀 芝士读书会</header>
+<header>
+  <div class="logo-container">
+    <img src="images/cheese-club-logo.png" alt="Cheese Club Logo" class="logo">
+  </div>
+  <div class="site-title">🧀 芝士读书会</div>
+</header>
 
 <div class="section">
   <div class="card">
@@ -164,7 +193,7 @@ h3 {
   <div class="scroll-container">
     <div class="book-item">
       <div class="book-cover">
-        <img src="images/L‘ Etranger.webp" alt="局外人封面">
+        <img src="images/L'Etranger.webp" alt="局外人封面" onerror="this.style.display='none';">
       </div>
       <div class="book-title">局外人</div>
       <span class="status-badge">本期</span>

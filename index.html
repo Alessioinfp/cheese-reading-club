@@ -178,6 +178,137 @@ h3 {
   font-size: 12px;
   margin-top: 5px;
 }
+
+/* ========== 页脚区域 ========== */
+footer {
+  background: linear-gradient(180deg, #fffaf0 0%, #fff9e6 100%);
+  border-top: 2px solid #f5e8c7;
+  padding: 40px 20px 30px 20px;
+  margin-top: 60px;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  margin-bottom: 25px;
+}
+
+.footer-section h4 {
+  color: #8b7355;
+  font-size: 16px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.copyright {
+  color: #8b7355;
+  font-size: 13px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #f5e8c7;
+}
+
+.copyright p {
+  margin: 5px 0;
+}
+
+.heart {
+  color: #d4a94f;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* ========== 页脚区域 ========== */
+footer {
+  background: linear-gradient(180deg, #fffaf0 0%, #fff9e6 100%);
+  border-top: 2px solid #f5e8c7;
+  padding: 40px 20px 30px 20px;
+  margin-top: 60px;
+}
+
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-section {
+  margin-bottom: 25px;
+}
+
+.footer-section h4 {
+  color: #8b7355;
+  font-size: 16px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.footer-links a {
+  color: #7a6a5b;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #d4a94f;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.social-links a {
+  color: #8b7355;
+  font-size: 20px;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  transform: scale(1.2);
+}
+
+.copyright {
+  color: #8b7355;
+  font-size: 13px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #f5e8c7;
+}
+
+.copyright p {
+  margin: 5px 0;
+}
+
+.heart {
+  color: #d4a94f;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
 </style>
 </head>
 <body>
@@ -258,8 +389,8 @@ h3 {
 
 </div>
 
-  <!-- ========== 页脚区域 ========== -->
-  <footer>
+<!-- ========== 页脚区域 ========== -->
+<footer>
   <div class="footer-content">
     
     <!-- 关于我们 -->
@@ -269,6 +400,24 @@ h3 {
         一个温暖的阅读社群，我们相信每本书都是一块独特的"芝士"，<br>
         在这里找到你的声音，分享你的故事。
       </p>
+    </div>
+
+    <!-- 快速链接 -->
+    <div class="footer-section">
+      <div class="footer-links">
+        <a href="#books">往期书单</a>
+        <a href="#discussion">讨论安排</a>
+        <a href="mailto:cheese-club@example.com">联系我们</a>
+      </div>
+    </div>
+
+    <!-- 社交媒体 -->
+    <div class="footer-section">
+      <div class="social-links">
+        <a href="#" title="微信公众号">📱</a>
+        <a href="#" title="小红书">📖</a>
+        <a href="#" title="豆瓣">🎬</a>
+      </div>
     </div>
 
     <!-- 版权信息 -->

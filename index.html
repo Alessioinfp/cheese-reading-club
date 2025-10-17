@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>芝士读书会</title>
 <style>
+/* ========== 全局样式 ========== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -18,6 +19,7 @@ body {
   line-height: 1.6;
 }
 
+/* ========== 头部区域 ========== */
 header {
   text-align: center;
   padding: 50px 20px 40px 20px;
@@ -51,12 +53,14 @@ header {
   text-shadow: 0 2px 4px rgba(255,255,255,0.5);
 }
 
+/* ========== 主内容区域 ========== */
 .section {
   padding: 20px;
   max-width: 900px;
   margin: 0 auto;
 }
 
+/* ========== 卡片样式 ========== */
 .card {
   background: #ffffff;
   border-radius: 12px;
@@ -81,6 +85,7 @@ header {
   font-style: italic;
 }
 
+/* ========== 书单区域 ========== */
 h3 {
   color: #8b7355;
   margin: 30px 0 15px 0;
@@ -109,6 +114,7 @@ h3 {
   border-radius: 4px;
 }
 
+/* ========== 书籍项目样式 ========== */
 .book-item {
   flex: 0 0 auto;
   text-align: center;
@@ -162,6 +168,7 @@ h3 {
   font-weight: 500;
 }
 
+/* ========== 标签样式 ========== */
 .status-badge {
   display: inline-block;
   background-color: #d4a94f;
@@ -175,6 +182,7 @@ h3 {
 </head>
 <body>
 
+<!-- ========== 头部：Logo 和标题 ========== -->
 <header>
   <div class="logo-container">
     <img src="images/芝士俱乐部.png" alt="Cheese Club Logo" class="logo">
@@ -182,15 +190,20 @@ h3 {
   <div class="site-title">🧀 芝士读书会</div>
 </header>
 
+<!-- ========== 主内容区域 ========== -->
 <div class="section">
+  
+  <!-- ========== 区域1：本期推荐 ========== -->
   <div class="card">
     <h2>📘 本期推荐：保罗·科埃略《牧羊少年奇幻之旅》</h2>
     <p>"一个名叫圣地亚哥的西班牙牧羊少年，为了追寻自己反复出现在梦中的宝藏，踏上了充满奇遇与启示的旅程。"</p>
-    <p>一部用童话形式讲人生哲理的小说，不是纯冒险故事，而是一本关于“寻找自我”的精神之书。</p>
+    <p>一部用童话形式讲人生哲理的小说，不是纯冒险故事，而是一本关于"寻找自我"的精神之书。</p>
   </div>
 
+  <!-- ========== 区域2：往期书单 ========== -->
   <h3>📚 往期书单</h3>
   <div class="scroll-container">
+    <!-- 第一期书籍 -->
     <div class="book-item">
       <div class="book-cover">
         <img src="images/局外人.webp" alt="局外人封面" onerror="this.style.display='none';">
@@ -199,6 +212,7 @@ h3 {
       <span class="status-badge">第一期</span>
     </div>
     
+    <!-- 本期书籍 -->
     <div class="book-item">
       <div class="book-cover">
         <img src="images/牧羊少年奇幻之旅.webp" alt="牧羊少年奇幻之旅封面" onerror="this.style.display='none';">
@@ -207,6 +221,7 @@ h3 {
       <span class="status-badge">本期</span>
     </div>
     
+    <!-- 待添加书籍1 -->
     <div class="book-item">
       <div class="book-cover">
         敬请期待
@@ -215,6 +230,7 @@ h3 {
       <div class="book-title">暂未待续</div>
     </div>
     
+    <!-- 待添加书籍2 -->
     <div class="book-item">
       <div class="book-cover">
         敬请期待
@@ -223,6 +239,7 @@ h3 {
       <div class="book-title">暂未待续</div>
     </div>
     
+    <!-- 待添加书籍3 -->
     <div class="book-item">
       <div class="book-cover">
         敬请期待
@@ -232,11 +249,13 @@ h3 {
     </div>
   </div>
 
+  <!-- ========== 区域3：最新讨论 ========== -->
   <div class="card">
     <h2>💬 最新讨论</h2>
     <p>下次讨论时间：2025年10月25日 周六上午 9:00</p>
     <p>主题：人与梦想之间的关系</p>
   </div>
+
 </div>
 
 </body>

@@ -12,65 +12,111 @@
   padding: 0;
 }
 
+/* ========== 页面背景容器 ========== */
 body {
   font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
   background-color: #fffaf0;
   color: #5a4a3b;
   line-height: 1.6;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* 背景图标层 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/芝士俱乐部.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 400px 320px;
+  opacity: 0.12;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 渐变遮罩层 */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 250, 240, 0.3) 0%,
+    rgba(255, 250, 240, 0.7) 50%,
+    rgba(255, 250, 240, 0.9) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 主内容容器 */
+.page-wrapper {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ========== 头部区域 ========== */
 header {
   text-align: center;
-  padding: 80px 20px 60px 20px;
-  background: linear-gradient(180deg, #ffd700 0%, #fff9e6 50%, #fffaf0 100%);
-  position: relative;
-  background-image: url('images/芝士俱乐部.png');
-  background-repeat: no-repeat;
-  background-position: center 30px;
-  background-size: 320px 250px;
-}
-
-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(180deg, rgba(255, 215, 0, 0.4) 0%, rgba(255, 249, 230, 0.6) 50%, rgba(255, 250, 240, 0.8) 100%);
-  pointer-events: none;
-}
-
-.logo-container {
-  display: none;
+  padding: 60px 20px 40px 20px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 215, 0, 0.15) 0%,
+    rgba(255, 249, 230, 0.1) 50%,
+    rgba(255, 250, 240, 0) 100%
+  );
+  backdrop-filter: blur(5px);
 }
 
 .site-title {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: bold;
   color: #5a4a3b;
-  margin-top: 180px;
-  text-shadow: 0 2px 4px rgba(255,255,255,0.8);
-  position: relative;
-  z-index: 1;
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.9);
+  margin-bottom: 10px;
+}
+
+.site-subtitle {
+  font-size: 16px;
+  color: #8b7355;
+  font-style: italic;
 }
 
 /* ========== 主内容区域 ========== */
 .section {
+  flex: 1;
   padding: 20px;
   max-width: 900px;
   margin: 0 auto;
+  width: 100%;
 }
 
 /* ========== 卡片样式 ========== */
 .card {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   margin-bottom: 30px;
-  border: 1px solid #f5e8c7;
+  border: 1px solid rgba(245, 232, 199, 0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 .card h2 {
@@ -93,6 +139,7 @@ h3 {
   color: #8b7355;
   margin: 30px 0 15px 0;
   font-size: 20px;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
 }
 
 .scroll-container {
@@ -101,6 +148,7 @@ h3 {
   gap: 20px;
   padding: 15px 5px;
   margin-bottom: 20px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .scroll-container::-webkit-scrollbar {
@@ -108,7 +156,7 @@ h3 {
 }
 
 .scroll-container::-webkit-scrollbar-track {
-  background: #f5e8c7;
+  background: rgba(245, 232, 199, 0.5);
   border-radius: 4px;
 }
 
@@ -135,7 +183,7 @@ h3 {
   height: 260px;
   border-radius: 10px;
   background: linear-gradient(135deg, #f5e8c7 0%, #ead5a8 100%);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -147,6 +195,7 @@ h3 {
   padding: 20px;
   overflow: hidden;
   position: relative;
+  backdrop-filter: blur(5px);
 }
 
 .book-cover img {
@@ -184,8 +233,13 @@ h3 {
 
 /* ========== 页脚区域 ========== */
 footer {
-  background: linear-gradient(180deg, #fffaf0 0%, #fff9e6 100%);
-  border-top: 2px solid #f5e8c7;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 250, 240, 0) 0%,
+    rgba(255, 249, 230, 0.3) 100%
+  );
+  backdrop-filter: blur(5px);
+  border-top: 2px solid rgba(245, 232, 199, 0.5);
   padding: 40px 20px 30px 20px;
   margin-top: 60px;
   text-align: center;
@@ -212,7 +266,7 @@ footer {
   font-size: 13px;
   margin-top: 20px;
   padding-top: 20px;
-  border-top: 1px solid #f5e8c7;
+  border-top: 1px solid rgba(245, 232, 199, 0.5);
 }
 
 .copyright p {
@@ -228,107 +282,120 @@ footer {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.1); }
 }
+
+/* ========== 响应式设计 ========== */
+@media (max-width: 768px) {
+  .site-title {
+    font-size: 28px;
+  }
+  
+  body::before {
+    background-size: 300px 240px;
+    opacity: 0.08;
+  }
+}
 </style>
 </head>
 <body>
 
-<!-- ========== 头部：Logo 和标题 ========== -->
-<header>
-  <div class="logo-container">
-    <img src="images/芝士俱乐部.png" alt="Cheese Club Logo" class="logo">
-  </div>
-  <div class="site-title">🧀 芝士读书会 🧀</div>
-</header>
+<div class="page-wrapper">
+  <!-- ========== 头部：标题 ========== -->
+  <header>
+    <div class="site-title">🧀 芝士读书会 🧀</div>
+    <div class="site-subtitle">find your voice · 在这里找到你的声音</div>
+  </header>
 
-<!-- ========== 主内容区域 ========== -->
-<div class="section">
-  
-  <!-- ========== 区域1：本期推荐 ========== -->
-  <div class="card">
-    <h2>📘 本期推荐：保罗·科埃略《牧羊少年奇幻之旅》</h2>
-    <p>"一个名叫圣地亚哥的西班牙牧羊少年，为了追寻自己反复出现在梦中的宝藏，踏上了充满奇遇与启示的旅程。"</p>
-    <p>一部用童话形式讲人生哲理的小说，不是纯冒险故事，而是一本关于"寻找自我"的精神之书。</p>
+  <!-- ========== 主内容区域 ========== -->
+  <div class="section">
+    
+    <!-- ========== 区域1：本期推荐 ========== -->
+    <div class="card">
+      <h2>📘 本期推荐：保罗·科埃略《牧羊少年奇幻之旅》</h2>
+      <p>"一个名叫圣地亚哥的西班牙牧羊少年，为了追寻自己反复出现在梦中的宝藏，踏上了充满奇遇与启示的旅程。"</p>
+      <p>一部用童话形式讲人生哲理的小说，不是纯冒险故事，而是一本关于"寻找自我"的精神之书。</p>
+    </div>
+
+    <!-- ========== 区域2：往期书单 ========== -->
+    <h3>📚 往期书单</h3>
+    <div class="scroll-container">
+      <!-- 第一期书籍 -->
+      <div class="book-item">
+        <div class="book-cover">
+          <img src="images/局外人.webp" alt="局外人封面" onerror="this.style.display='none';">
+        </div>
+        <div class="book-title">局外人</div>
+        <span class="status-badge">第一期</span>
+      </div>
+      
+      <!-- 本期书籍 -->
+      <div class="book-item">
+        <div class="book-cover">
+          <img src="images/牧羊少年奇幻之旅.webp" alt="牧羊少年奇幻之旅封面" onerror="this.style.display='none';">
+        </div>
+        <div class="book-title">牧羊少年奇幻之旅</div>
+        <span class="status-badge">本期</span>
+      </div>
+      
+      <!-- 待添加书籍1 -->
+      <div class="book-item">
+        <div class="book-cover">
+          敬请期待
+          <small>即将推出</small>
+        </div>
+        <div class="book-title">暂未待续</div>
+      </div>
+      
+      <!-- 待添加书籍2 -->
+      <div class="book-item">
+        <div class="book-cover">
+          敬请期待
+          <small>即将推出</small>
+        </div>
+        <div class="book-title">暂未待续</div>
+      </div>
+      
+      <!-- 待添加书籍3 -->
+      <div class="book-item">
+        <div class="book-cover">
+          敬请期待
+          <small>即将推出</small>
+        </div>
+        <div class="book-title">暂未待续</div>
+      </div>
+    </div>
+
+    <!-- ========== 区域3：最新讨论 ========== -->
+    <div class="card">
+      <h2>💬 最新讨论</h2>
+      <p>下次讨论时间：2025年10月25日 周六上午 9:00</p>
+      <p>主题：人与梦想之间的关系</p>
+    </div>
+
   </div>
 
-  <!-- ========== 区域2：往期书单 ========== -->
-  <h3>📚 往期书单</h3>
-  <div class="scroll-container">
-    <!-- 第一期书籍 -->
-    <div class="book-item">
-      <div class="book-cover">
-        <img src="images/局外人.webp" alt="局外人封面" onerror="this.style.display='none';">
+  <!-- ========== 页脚区域 ========== -->
+  <footer>
+    <div class="footer-content">
+      
+      <!-- 关于我们 -->
+      <div class="footer-section">
+        <h4>关于芝士读书会</h4>
+        <p style="color: #7a6a5b; font-size: 14px; max-width: 600px; margin: 0 auto;">
+          一个温暖的阅读社群，我们相信每本书都是一块独特的"芝士"，<br>
+          在这里找到你的声音，分享你的故事。
+        </p>
       </div>
-      <div class="book-title">局外人</div>
-      <span class="status-badge">第一期</span>
-    </div>
-    
-    <!-- 本期书籍 -->
-    <div class="book-item">
-      <div class="book-cover">
-        <img src="images/牧羊少年奇幻之旅.webp" alt="牧羊少年奇幻之旅封面" onerror="this.style.display='none';">
-      </div>
-      <div class="book-title">牧羊少年奇幻之旅</div>
-      <span class="status-badge">本期</span>
-    </div>
-    
-    <!-- 待添加书籍1 -->
-    <div class="book-item">
-      <div class="book-cover">
-        敬请期待
-        <small>即将推出</small>
-      </div>
-      <div class="book-title">暂未待续</div>
-    </div>
-    
-    <!-- 待添加书籍2 -->
-    <div class="book-item">
-      <div class="book-cover">
-        敬请期待
-        <small>即将推出</small>
-      </div>
-      <div class="book-title">暂未待续</div>
-    </div>
-    
-    <!-- 待添加书籍3 -->
-    <div class="book-item">
-      <div class="book-cover">
-        敬请期待
-        <small>即将推出</small>
-      </div>
-      <div class="book-title">暂未待续</div>
-    </div>
-  </div>
 
-  <!-- ========== 区域3：最新讨论 ========== -->
-  <div class="card">
-    <h2>💬 最新讨论</h2>
-    <p>下次讨论时间：2025年10月25日 周六上午 9:00</p>
-    <p>主题：人与梦想之间的关系</p>
-  </div>
+      <!-- 版权信息 -->
+      <div class="copyright">
+        <p>© 2025 芝士读书会 Cheese Reading Club. All rights reserved.</p>
+        <p>Made with <span class="heart">♥</span> for book lovers</p>
+      </div>
+      
+    </div>
+  </footer>
 
 </div>
-
-<!-- ========== 页脚区域 ========== -->
-<footer>
-  <div class="footer-content">
-    
-    <!-- 关于我们 -->
-    <div class="footer-section">
-      <h4>关于芝士读书会</h4>
-      <p style="color: #7a6a5b; font-size: 14px; max-width: 600px; margin: 0 auto;">
-        一个温暖的阅读社群，我们相信每本书都是一块独特的"芝士"，<br>
-        在这里找到你的声音，分享你的故事。
-      </p>
-    </div>
-
-    <!-- 版权信息 -->
-    <div class="copyright">
-      <p>© 2025 芝士读书会 Cheese Reading Club. All rights reserved.</p>
-      <p>Made with <span class="heart">♥</span> for book lovers</p>
-    </div>
-    
-  </div>
-</footer>
 
 </body>
 </html>

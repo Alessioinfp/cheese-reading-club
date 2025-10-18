@@ -12,6 +12,28 @@
   padding: 0;
 }
 
+:root {
+  --bg-primary: #fffaf0;
+  --bg-secondary: rgba(255, 255, 255, 0.95);
+  --text-primary: #5a4a3b;
+  --text-secondary: #7a6a5b;
+  --accent-color: #d4a94f;
+  --header-bg: linear-gradient(135deg, #f5e8c7 0%, #ead5a8 100%);
+  --card-border: rgba(245, 232, 199, 0.8);
+  --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+body.dark-mode {
+  --bg-primary: #1a1410;
+  --bg-secondary: rgba(40, 35, 30, 0.95);
+  --text-primary: #e8d4b8;
+  --text-secondary: #c8b89a;
+  --accent-color: #f0c674;
+  --header-bg: linear-gradient(135deg, #3a2f1f 0%, #4a3a28 100%);
+  --card-border: rgba(80, 70, 55, 0.8);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
 .cheese-deco {
   display: flex;
   gap: 10px;
@@ -35,11 +57,12 @@
 /* ========== 页面背景容器 ========== */
 body {
   font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-  background-color: #fffaf0;
-  color: #5a4a3b;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   line-height: 1.6;
   position: relative;
   min-height: 100vh;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* 背景图标层 */
@@ -57,6 +80,11 @@ body::before {
   opacity: 0.15;
   z-index: 0;
   pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+body.dark-mode::before {
+  opacity: 0.05;
 }
 
 /* 渐变遮罩层 */
@@ -75,6 +103,16 @@ body::after {
   );
   z-index: 1;
   pointer-events: none;
+  transition: background 0.5s ease;
+}
+
+body.dark-mode::after {
+  background: linear-gradient(
+    180deg,
+    rgba(26, 20, 16, 0.7) 0%,
+    rgba(26, 20, 16, 0.8) 50%,
+    rgba(26, 20, 16, 0.9) 100%
+  );
 }
 
 /* 主内容容器 */
@@ -86,25 +124,62 @@ body::after {
   flex-direction: column;
 }
 
+/* ========== 控制按钮区域 ========== */
+.controls {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  gap: 10px;
+}
+
+.control-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  background: var(--bg-secondary);
+  color: var(--accent-color);
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.control-btn:active {
+  transform: scale(0.95);
+}
+
 /* ========== 头部区域 ========== */
 header {
   text-align: center;
   padding: 15px 20px;
-  background: linear-gradient(135deg, #f5e8c7 0%, #ead5a8 100%);
-  border-bottom: 3px solid #d4a94f;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  background: var(--header-bg);
+  border-bottom: 3px solid var(--accent-color);
+  box-shadow: 0 3px 10px var(--shadow-color);
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 75px;
   position: relative;
   overflow: hidden;
+  transition: all 0.5s ease;
 }
 
 .logo-header {
   margin: 0 auto;
   max-width: 250px;
   width: 100%;
+  animation: fadeInDown 0.8s ease;
 }
 
 .logo-image {
@@ -116,6 +191,11 @@ header {
   transform: scale(1.1);
   background: linear-gradient(135deg, #f5e8c7 0%, #ead5a8 100%);
   border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.logo-image:hover {
+  transform: scale(1.15) rotate(5deg);
 }
 
 .site-title {
@@ -124,6 +204,46 @@ header {
 
 .site-subtitle {
   display: none;
+}
+
+/* ========== 搜索区域 ========== */
+.search-section {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 20px;
+  animation: fadeIn 1s ease;
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 15px 50px 15px 20px;
+  border: 2px solid var(--card-border);
+  border-radius: 25px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(212, 169, 79, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent-color);
+  font-size: 20px;
+  pointer-events: none;
 }
 
 /* ========== 主内容区域 ========== */
@@ -137,30 +257,31 @@ header {
 
 /* ========== 卡片样式 ========== */
 .card {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-secondary);
   backdrop-filter: blur(10px);
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px var(--shadow-color);
   margin-bottom: 30px;
-  border: 1px solid rgba(245, 232, 199, 0.8);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--card-border);
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.6s ease;
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px var(--shadow-color);
 }
 
 .card h2 {
   margin: 0 0 15px 0;
-  color: #d4a94f;
+  color: var(--accent-color);
   font-size: 22px;
 }
 
 .card p {
   margin: 10px 0;
-  color: #7a6a5b;
+  color: var(--text-secondary);
 }
 
 .card p:first-of-type {
@@ -169,10 +290,11 @@ header {
 
 /* ========== 书单区域 ========== */
 h3 {
-  color: #8b7355;
+  color: var(--text-primary);
   margin: 30px 0 15px 0;
   font-size: 20px;
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.3);
+  animation: fadeIn 0.8s ease;
 }
 
 .scroll-container {
@@ -189,12 +311,12 @@ h3 {
 }
 
 .scroll-container::-webkit-scrollbar-track {
-  background: rgba(245, 232, 199, 0.5);
+  background: var(--card-border);
   border-radius: 4px;
 }
 
 .scroll-container::-webkit-scrollbar-thumb {
-  background: #d4a94f;
+  background: var(--accent-color);
   border-radius: 4px;
 }
 
@@ -202,13 +324,14 @@ h3 {
 .book-item {
   flex: 0 0 auto;
   text-align: center;
-  color: #5a4a3b;
+  color: var(--text-primary);
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
+  animation: slideInLeft 0.6s ease;
 }
 
 .book-item:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
 }
 
 .book-cover {
@@ -216,7 +339,7 @@ h3 {
   height: 260px;
   border-radius: 10px;
   background: linear-gradient(135deg, #f5e8c7 0%, #ead5a8 100%);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 10px var(--shadow-color);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -229,6 +352,11 @@ h3 {
   overflow: hidden;
   position: relative;
   backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.book-item:hover .book-cover {
+  box-shadow: 0 8px 20px var(--shadow-color);
 }
 
 .book-cover img {
@@ -239,6 +367,11 @@ h3 {
   height: 100%;
   object-fit: cover;
   object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.book-item:hover .book-cover img {
+  transform: scale(1.05);
 }
 
 .book-cover small {
@@ -256,12 +389,98 @@ h3 {
 /* ========== 标签样式 ========== */
 .status-badge {
   display: inline-block;
-  background-color: #d4a94f;
+  background-color: var(--accent-color);
   color: white;
   padding: 4px 12px;
   border-radius: 12px;
   font-size: 12px;
   margin-top: 5px;
+}
+
+/* ========== 弹出层样式 ========== */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--bg-secondary);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 40px var(--shadow-color);
+  animation: scaleIn 0.3s ease;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 28px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  color: var(--accent-color);
+  transform: rotate(90deg);
+}
+
+.modal-book-cover {
+  width: 100%;
+  max-width: 300px;
+  height: 400px;
+  margin: 0 auto 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.modal-book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-book-title {
+  font-size: 24px;
+  color: var(--accent-color);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.modal-book-author {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal-book-description {
+  line-height: 1.8;
+  color: var(--text-primary);
+  margin-bottom: 15px;
 }
 
 /* ========== 页脚区域 ========== */
@@ -272,10 +491,19 @@ footer {
     rgba(255, 249, 230, 0.3) 100%
   );
   backdrop-filter: blur(5px);
-  border-top: 2px solid rgba(245, 232, 199, 0.5);
+  border-top: 2px solid var(--card-border);
   padding: 40px 20px 30px 20px;
   margin-top: 60px;
   text-align: center;
+  transition: all 0.5s ease;
+}
+
+body.dark-mode footer {
+  background: linear-gradient(
+    180deg,
+    rgba(26, 20, 16, 0) 0%,
+    rgba(26, 20, 16, 0.3) 100%
+  );
 }
 
 .footer-content {
@@ -288,18 +516,22 @@ footer {
 }
 
 .footer-section h4 {
-  color: #8b7355;
+  color: var(--text-primary);
   font-size: 16px;
   margin-bottom: 12px;
   font-weight: 600;
 }
 
+.footer-section p {
+  color: var(--text-secondary);
+}
+
 .copyright {
-  color: #8b7355;
+  color: var(--text-primary);
   font-size: 13px;
   margin-top: 20px;
   padding-top: 20px;
-  border-top: 1px solid rgba(245, 232, 199, 0.5);
+  border-top: 1px solid var(--card-border);
 }
 
 .copyright p {
@@ -307,7 +539,7 @@ footer {
 }
 
 .heart {
-  color: #d4a94f;
+  color: var(--accent-color);
   animation: heartbeat 1.5s ease-in-out infinite;
 }
 
@@ -316,8 +548,68 @@ footer {
   50% { transform: scale(1.1); }
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 /* ========== 响应式设计 ========== */
 @media (max-width: 768px) {
+  .controls {
+    top: 10px;
+    right: 10px;
+  }
+
+  .control-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
   header {
     min-height: 60px;
     padding: 10px 20px;
@@ -339,12 +631,30 @@ footer {
       rgba(255, 250, 240, 0.75) 100%
     );
   }
+
+  body.dark-mode::after {
+    background: linear-gradient(
+      180deg,
+      rgba(26, 20, 16, 0.8) 0%,
+      rgba(26, 20, 16, 0.9) 100%
+    );
+  }
+
+  .modal-content {
+    padding: 20px;
+  }
 }
 </style>
 </head>
 <body>
 
 <div class="page-wrapper">
+  <!-- ========== 控制按钮 ========== -->
+  <div class="controls">
+    <button class="control-btn" id="themeToggle" title="切换主题">🌙</button>
+    <button class="control-btn" id="musicToggle" title="背景音乐">🎵</button>
+  </div>
+
   <!-- ========== 头部：标题 ========== -->
   <header>
     <div class="logo-header">
@@ -353,6 +663,14 @@ footer {
     <div class="site-title">芝士读书会</div>
     <div class="site-subtitle">在这里找到你的声音</div>
   </header>
+
+  <!-- ========== 搜索区域 ========== -->
+  <div class="search-section">
+    <div class="search-box">
+      <input type="text" class="search-input" id="searchInput" placeholder="搜索往期书单...">
+      <span class="search-icon">🔍</span>
+    </div>
+  </div>
 
   <!-- ========== 主内容区域 ========== -->
   <div class="section">
@@ -366,9 +684,9 @@ footer {
 
     <!-- ========== 区域2：往期书单 ========== -->
     <h3>📚 往期书单</h3>
-    <div class="scroll-container">
+    <div class="scroll-container" id="bookList">
       <!-- 第一期书籍 -->
-      <div class="book-item">
+      <div class="book-item" data-book="outsider">
         <div class="book-cover">
           <img src="images/局外人.webp" alt="局外人封面" onerror="this.style.display='none';">
         </div>
@@ -377,7 +695,7 @@ footer {
       </div>
       
       <!-- 本期书籍 -->
-      <div class="book-item">
+      <div class="book-item" data-book="alchemist">
         <div class="book-cover">
           <img src="images/牧羊少年奇幻之旅.webp" alt="牧羊少年奇幻之旅封面" onerror="this.style.display='none';">
         </div>
@@ -429,7 +747,7 @@ footer {
       <!-- 关于我们 -->
       <div class="footer-section">
         <h4>关于芝士读书会</h4>
-        <p style="color: #7a6a5b; font-size: 14px; max-width: 600px; margin: 0 auto;">
+        <p style="font-size: 14px; max-width: 600px; margin: 0 auto;">
           一个温暖的阅读社群，我们相信每本书都是一块独特的"芝士"，<br>
           在这里找到你的声音，分享你的故事。
         </p>
@@ -445,6 +763,130 @@ footer {
   </footer>
 
 </div>
+
+<!-- ========== 书籍详情弹出层 ========== -->
+<div class="modal" id="bookModal">
+  <div class="modal-content">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <div class="modal-book-cover" id="modalCover">
+      <img src="" alt="书籍封面" id="modalCoverImg">
+    </div>
+    <h3 class="modal-book-title" id="modalTitle"></h3>
+    <p class="modal-book-author" id="modalAuthor"></p>
+    <p class="modal-book-description" id="modalDescription"></p>
+    <p class="modal-book-description" id="modalQuote"></p>
+  </div>
+</div>
+
+<!-- 隐藏的音频播放器 -->
+<audio id="bgMusic" loop>
+  <source src="music/background.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// 书籍数据
+const booksData = {
+  outsider: {
+    title: '局外人',
+    author: '阿尔贝·加缪',
+    cover: 'images/局外人.webp',
+    description: '《局外人》是法国作家加缪的代表作，讲述了一个对一切都漠然处之的小职员默尔索的故事。他在母亲去世后表现冷漠，后来又无故杀人，最终被判处死刑。',
+    quote: '"在我们的社会里，任何不在母亲葬礼上哭泣的人，都有可能被判死刑。"'
+  },
+  alchemist: {
+    title: '牧羊少年奇幻之旅',
+    author: '保罗·科埃略',
+    cover: 'images/牧羊少年奇幻之旅.webp',
+    description: '一个名叫圣地亚哥的西班牙牧羊少年，为了追寻自己反复出现在梦中的宝藏，踏上了充满奇遇与启示的旅程。在旅途中，他遇到了各种人物，学会了倾听内心，理解世界的语言。',
+    quote: '"当你真心渴望某样东西时，整个宇宙都会联合起来帮助你完成。"'
+  }
+};
+
+// 主题切换
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+
+themeToggle.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+  themeToggle.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
+});
+
+// 音乐播放器
+const musicToggle = document.getElementById('musicToggle');
+const bgMusic = document.getElementById('bgMusic');
+let isPlaying = false;
+
+musicToggle.addEventListener('click', () => {
+  if (isPlaying) {
+    bgMusic.pause();
+    musicToggle.textContent = '🎵';
+    isPlaying = false;
+  } else {
+    bgMusic.play().catch(() => {
+      alert('请添加背景音乐文件到 music/background.mp3');
+    });
+    musicToggle.textContent = '🔇';
+    isPlaying = true;
+  }
+});
+
+// 书籍详情弹出层
+const bookItems = document.querySelectorAll('.book-item[data-book]');
+const modal = document.getElementById('bookModal');
+const modalClose = document.getElementById('modalClose');
+const modalTitle = document.getElementById('modalTitle');
+const modalAuthor = document.getElementById('modalAuthor');
+const modalDescription = document.getElementById('modalDescription');
+const modalQuote = document.getElementById('modalQuote');
+const modalCoverImg = document.getElementById('modalCoverImg');
+
+bookItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const bookKey = item.getAttribute('data-book');
+    const book = booksData[bookKey];
+    
+    if (book) {
+      modalTitle.textContent = book.title;
+      modalAuthor.textContent = `作者：${book.author}`;
+      modalDescription.textContent = book.description;
+      modalQuote.textContent = book.quote;
+      modalQuote.style.fontStyle = 'italic';
+      modalQuote.style.color = 'var(--accent-color)';
+      modalCoverImg.src = book.cover;
+      modal.classList.add('active');
+    }
+  });
+});
+
+modalClose.addEventListener('click', () => {
+  modal.classList.remove('active');
+});
+
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.classList.remove('active');
+  }
+});
+
+// 搜索功能
+const searchInput = document.getElementById('searchInput');
+const bookList = document.getElementById('bookList');
+
+searchInput.addEventListener('input', (e) => {
+  const searchTerm = e.target.value.toLowerCase();
+  const allBooks = bookList.querySelectorAll('.book-item');
+  
+  allBooks.forEach(book => {
+    const title = book.querySelector('.book-title').textContent.toLowerCase();
+    if (title.includes(searchTerm)) {
+      book.style.display = 'block';
+      book.style.animation = 'fadeIn 0.5s ease';
+    } else {
+      book.style.display = 'none';
+    }
+  });
+});
+</script>
 
 </body>
 </html>

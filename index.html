@@ -10,6 +10,27 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
+  .cheese-deco {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-left: 15px;
+  opacity: 0.4; /* 设置整体透明度 */
+}
+
+.cheese-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.1));
+  transition: transform 0.3s ease;
+}
+
+.cheese-icon.rotated {
+  transform: rotate(-20deg) scale(0.95);
+}
+
 }
 
 /* ========== 页面背景容器 ========== */

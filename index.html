@@ -34,7 +34,7 @@ body::before {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  opacity: 0.5;
+  opacity: 0.15;
   z-index: 0;
   pointer-events: none;
 }
@@ -69,28 +69,35 @@ body::after {
 /* ========== 头部区域 ========== */
 header {
   text-align: center;
-  padding: 60px 20px 40px 20px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 215, 0, 0.15) 0%,
-    rgba(255, 249, 230, 0.1) 50%,
-    rgba(255, 250, 240, 0) 100%
-  );
-  backdrop-filter: blur(5px);
+  padding: 15px 20px;
+  background-color: #ffd700;
+  border-bottom: 3px solid #e6c200;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 75px;
+}
+
+.logo-header {
+  margin: 0 auto;
+  max-width: 250px;
+  width: 100%;
+}
+
+.logo-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
 }
 
 .site-title {
-  font-size: 36px;
-  font-weight: bold;
-  color: #5a4a3b;
-  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.9);
-  margin-bottom: 10px;
+  display: none;
 }
 
 .site-subtitle {
-  font-size: 16px;
-  color: #8b7355;
-  font-style: italic;
+  display: none;
 }
 
 /* ========== 主内容区域 ========== */
@@ -285,8 +292,13 @@ footer {
 
 /* ========== 响应式设计 ========== */
 @media (max-width: 768px) {
-  .site-title {
-    font-size: 28px;
+  header {
+    min-height: 60px;
+    padding: 10px 20px;
+  }
+  
+  .logo-header {
+    max-width: 200px;
   }
   
   body::before {
@@ -309,8 +321,11 @@ footer {
 <div class="page-wrapper">
   <!-- ========== 头部：标题 ========== -->
   <header>
-    <div class="site-title">🧀 芝士读书会 🧀</div>
-    <div class="site-subtitle">find your voice · 在这里找到你的声音</div>
+    <div class="logo-header">
+      <img src="images/芝士俱乐部.png" alt="Cheese Club Logo" class="logo-image">
+    </div>
+    <div class="site-title">芝士读书会</div>
+    <div class="site-subtitle">在这里找到你的声音</div>
   </header>
 
   <!-- ========== 主内容区域 ========== -->

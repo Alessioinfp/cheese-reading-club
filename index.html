@@ -1516,14 +1516,21 @@ saveNoteBtn.addEventListener('click', () => {
 
 // 数据持久化
 function saveData() {
-  const data = JSON.stringify(bookData);
-  // 使用内存存储
-  window.bookDataStore = data;
+  try {
+    localStorage.setItem('cheeseBookData', JSON.stringify(bookData));
+  } catch (e) {
+    console.log('数据保存失败');
+  }
 }
 
 function loadData() {
-  if (window.bookDataStore) {
-    bookData = JSON.parse(window.bookDataStore);
+  try {
+    const data = localStorage.getItem('cheeseBookData');
+    if (data) {
+      bookData = JSON.parse(data);
+    }
+  } catch (e) {
+    console.log('数据加载失败');
   }
 }
 
@@ -1676,12 +1683,21 @@ document.getElementById('nextMonth').addEventListener('click', () => {
 });
 
 function saveCalendarData() {
-  window.calendarDataStore = JSON.stringify(Array.from(checkedDates));
+  try {
+    localStorage.setItem('cheeseCalendarData', JSON.stringify(Array.from(checkedDates)));
+  } catch (e) {
+    console.log('日历数据保存失败');
+  }
 }
 
 function loadCalendarData() {
-  if (window.calendarDataStore) {
-    checkedDates = new Set(JSON.parse(window.calendarDataStore));
+  try {
+    const data = localStorage.getItem('cheeseCalendarData');
+    if (data) {
+      checkedDates = new Set(JSON.parse(data));
+    }
+  } catch (e) {
+    console.log('日历数据加载失败');
   }
 }
 

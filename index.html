@@ -10,13 +10,14 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
 
-  .cheese-deco {
+.cheese-deco {
   display: flex;
   gap: 10px;
   align-items: center;
   margin-left: 15px;
-  opacity: 0.4; /* 设置整体透明度 */
+  opacity: 0.4;
 }
 
 .cheese-icon {
@@ -29,8 +30,6 @@
 
 .cheese-icon.rotated {
   transform: rotate(-20deg) scale(0.95);
-}
-
 }
 
 /* ========== 页面背景容器 ========== */
@@ -87,7 +86,7 @@ body::after {
   flex-direction: column;
 }
 
-  /* ========== 头部区域 ========== */
+/* ========== 头部区域 ========== */
 header {
   text-align: center;
   padding: 15px 20px;
@@ -101,7 +100,6 @@ header {
   position: relative;
   overflow: hidden;
 }
-
 
 .logo-header {
   margin: 0 auto;
@@ -349,6 +347,10 @@ footer {
   <header>
     <div class="logo-header">
       <img src="images/芝士俱乐部.png" alt="Cheese Club Logo" class="logo-image">
+    </div>
+    <div class="cheese-deco">
+      <img src="images/芝士俱乐部.png" alt="cheese" class="cheese-icon">
+      <img src="images/芝士俱乐部.png" alt="cheese" class="cheese-icon rotated">
     </div>
     <div class="site-title">芝士读书会</div>
     <div class="site-subtitle">在这里找到你的声音</div>

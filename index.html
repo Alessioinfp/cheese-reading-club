@@ -22,35 +22,38 @@ body {
 /* ========== 头部区域 ========== */
 header {
   text-align: center;
-  padding: 50px 20px 40px 20px;
+  padding: 80px 20px 60px 20px;
   background: linear-gradient(180deg, #ffd700 0%, #fff9e6 50%, #fffaf0 100%);
   position: relative;
+  background-image: url('images/芝士俱乐部.png');
+  background-repeat: no-repeat;
+  background-position: center 30px;
+  background-size: 320px 250px;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(255, 215, 0, 0.4) 0%, rgba(255, 249, 230, 0.6) 50%, rgba(255, 250, 240, 0.8) 100%);
+  pointer-events: none;
 }
 
 .logo-container {
-  margin-bottom: 15px;
-}
-
-.logo {
-  width: 230px;
-  height: 180px;
-  margin: 0 auto;
-  display: block;
-  opacity: 0.95;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
-  transition: transform 0.3s ease;
-}
-
-.logo:hover {
-  transform: scale(1.05);
+  display: none;
 }
 
 .site-title {
   font-size: 32px;
   font-weight: bold;
   color: #5a4a3b;
-  margin-top: 10px;
-  text-shadow: 0 2px 4px rgba(255,255,255,0.5);
+  margin-top: 180px;
+  text-shadow: 0 2px 4px rgba(255,255,255,0.8);
+  position: relative;
+  z-index: 1;
 }
 
 /* ========== 主内容区域 ========== */
@@ -202,90 +205,6 @@ footer {
   font-size: 16px;
   margin-bottom: 12px;
   font-weight: 600;
-}
-
-.copyright {
-  color: #8b7355;
-  font-size: 13px;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #f5e8c7;
-}
-
-.copyright p {
-  margin: 5px 0;
-}
-
-.heart {
-  color: #d4a94f;
-  animation: heartbeat 1.5s ease-in-out infinite;
-}
-
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-
-/* ========== 页脚区域 ========== */
-footer {
-  background: linear-gradient(180deg, #fffaf0 0%, #fff9e6 100%);
-  border-top: 2px solid #f5e8c7;
-  padding: 40px 20px 30px 20px;
-  margin-top: 60px;
-}
-
-.footer-content {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.footer-section {
-  margin-bottom: 25px;
-}
-
-.footer-section h4 {
-  color: #8b7355;
-  font-size: 16px;
-  margin-bottom: 12px;
-  font-weight: 600;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-.footer-links a {
-  color: #7a6a5b;
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: #d4a94f;
-}
-
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin: 15px 0;
-}
-
-.social-links a {
-  color: #8b7355;
-  font-size: 20px;
-  transition: transform 0.3s ease;
-  text-decoration: none;
-}
-
-.social-links a:hover {
-  transform: scale(1.2);
 }
 
 .copyright {

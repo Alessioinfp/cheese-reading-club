@@ -224,12 +224,6 @@ body.dark-mode::after {
   transform: translateY(0);
 }
 
-.auth-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
 .auth-error {
   color: #f44336;
   font-size: 13px;
@@ -244,21 +238,6 @@ body.dark-mode::after {
 .auth-error.show {
   display: block;
   animation: shake 0.5s ease;
-}
-
-.auth-success {
-  color: #4CAF50;
-  font-size: 13px;
-  margin-top: 12px;
-  text-align: center;
-  padding: 10px;
-  background: rgba(76, 175, 80, 0.1);
-  border-radius: 8px;
-  display: none;
-}
-
-.auth-success.show {
-  display: block;
 }
 
 @keyframes shake {
@@ -369,22 +348,6 @@ header {
   max-width: 250px;
   width: 100%;
   animation: fadeInDown 0.8s ease;
-}
-
-.logo-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
-  clip-path: circle(42% at center);
-  transform: scale(1.1);
-  background: linear-gradient(135deg, #f5e8c7 0%, #ead5a8 100%);
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
-
-.logo-image:hover {
-  transform: scale(1.15) rotate(5deg);
 }
 
 .logo-text {
@@ -682,162 +645,17 @@ h3 {
   margin-bottom: 15px;
 }
 
-.calendar-section {
-  margin: 30px 0;
-  animation: fadeInUp 0.8s ease;
-}
-
-.calendar-card {
-  background: var(--bg-secondary);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 4px 12px var(--shadow-color);
-  border: 1px solid var(--card-border);
-}
-
-.calendar-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.calendar-title {
-  font-size: 20px;
-  color: var(--accent-color);
-  font-weight: 600;
-}
-
-.calendar-nav {
-  display: flex;
-  gap: 10px;
-}
-
-.calendar-nav-btn {
-  width: 30px;
-  height: 30px;
-  border: none;
-  background: var(--accent-color);
-  color: white;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.calendar-nav-btn:hover {
-  transform: scale(1.1);
-}
-
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
-  margin-bottom: 15px;
-}
-
-.calendar-day-header {
-  text-align: center;
-  font-size: 12px;
-  color: var(--text-secondary);
-  padding: 8px 0;
-  font-weight: 600;
-}
-
-.calendar-day {
-  aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  position: relative;
-}
-
-.calendar-day:hover {
-  background: var(--accent-color);
-  color: white;
-  transform: scale(1.1);
-}
-
-.calendar-day.checked {
-  background: #4CAF50;
-  color: white;
-  font-weight: bold;
-}
-
-.calendar-day.checked::after {
-  content: '✓';
-  position: absolute;
-  bottom: 2px;
-  right: 2px;
-  font-size: 10px;
-}
-
-.calendar-day.today {
-  border: 2px solid var(--accent-color);
-}
-
-.calendar-stats {
-  text-align: center;
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid var(--card-border);
-  color: var(--text-secondary);
-  font-size: 14px;
-}
-
 footer {
-  background: linear-gradient(180deg, rgba(255, 250, 240, 0) 0%, rgba(255, 249, 230, 0.3) 100%);
-  backdrop-filter: blur(5px);
+  background: var(--bg-secondary);
   border-top: 2px solid var(--card-border);
-  padding: 40px 20px 30px 20px;
+  padding: 30px 20px;
   margin-top: 60px;
   text-align: center;
-}
-
-body.dark-mode footer {
-  background: linear-gradient(180deg, rgba(26, 20, 16, 0) 0%, rgba(26, 20, 16, 0.3) 100%);
-}
-
-.footer-content {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.footer-section {
-  margin-bottom: 25px;
-}
-
-.footer-section h4 {
-  color: var(--text-primary);
-  font-size: 16px;
-  margin-bottom: 12px;
-  font-weight: 600;
-}
-
-.footer-section p {
-  color: var(--text-secondary);
 }
 
 .copyright {
   color: var(--text-primary);
   font-size: 13px;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid var(--card-border);
-}
-
-.copyright p {
-  margin: 5px 0;
 }
 
 @keyframes fadeIn {
@@ -849,17 +667,6 @@ body.dark-mode footer {
   from {
     opacity: 0;
     transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -922,7 +729,7 @@ body.dark-mode footer {
         <label class="form-label">密码</label>
         <input type="password" class="form-input" id="loginPassword" placeholder="请输入密码" required>
       </div>
-      <button type="submit" class="auth-button" id="loginBtn">登录</button>
+      <button type="submit" class="auth-button">登录</button>
       <div class="auth-error" id="loginError"></div>
     </form>
     
@@ -930,19 +737,18 @@ body.dark-mode footer {
     <form class="auth-form" id="registerForm">
       <div class="form-group">
         <label class="form-label">用户名</label>
-        <input type="text" class="form-input" id="registerUsername" placeholder="请输入用户名（2-20个字符）" required>
+        <input type="text" class="form-input" id="registerUsername" placeholder="请输入用户名" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">邮箱</label>
+        <input type="email" class="form-input" id="registerEmail" placeholder="请输入邮箱" required>
       </div>
       <div class="form-group">
         <label class="form-label">密码</label>
         <input type="password" class="form-input" id="registerPassword" placeholder="请输入密码（至少6位）" required>
       </div>
-      <div class="form-group">
-        <label class="form-label">确认密码</label>
-        <input type="password" class="form-input" id="registerPasswordConfirm" placeholder="请再次输入密码" required>
-      </div>
-      <button type="submit" class="auth-button" id="registerBtn">注册</button>
+      <button type="submit" class="auth-button">注册</button>
       <div class="auth-error" id="registerError"></div>
-      <div class="auth-success" id="registerSuccess"></div>
     </form>
   </div>
 </div>
@@ -1037,49 +843,13 @@ body.dark-mode footer {
       <p>下次讨论时间：2025年10月25日 周六上午 9:00</p>
       <p>主题：人与梦想之间的关系</p>
     </div>
-
-    <!-- 打卡日历 -->
-    <div class="calendar-section">
-      <div class="calendar-card">
-        <div class="calendar-header">
-          <div class="calendar-title">📖 阅读打卡日历</div>
-          <div class="calendar-nav">
-            <button class="calendar-nav-btn" id="prevMonth">◀</button>
-            <button class="calendar-nav-btn" id="nextMonth">▶</button>
-          </div>
-        </div>
-        <div id="calendarMonth" style="text-align: center; margin-bottom: 15px; font-weight: 600; color: var(--accent-color);"></div>
-        <div class="calendar-grid">
-          <div class="calendar-day-header">日</div>
-          <div class="calendar-day-header">一</div>
-          <div class="calendar-day-header">二</div>
-          <div class="calendar-day-header">三</div>
-          <div class="calendar-day-header">四</div>
-          <div class="calendar-day-header">五</div>
-          <div class="calendar-day-header">六</div>
-        </div>
-        <div class="calendar-grid" id="calendarGrid"></div>
-        <div class="calendar-stats">
-          本月已打卡 <span id="checkedDays" style="color: var(--accent-color); font-weight: bold;">0</span> 天
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- 页脚 -->
   <footer>
-    <div class="footer-content">
-      <div class="footer-section">
-        <h4>关于芝士读书会</h4>
-        <p style="font-size: 14px; max-width: 600px; margin: 0 auto;">
-          一个温暖的阅读社群，我们相信每本书都是一块独特的"芝士"，<br>
-          在这里找到你的声音，分享你的故事。
-        </p>
-      </div>
-      <div class="copyright">
-        <p>© 2025 芝士读书会 Cheese Reading Club. All rights reserved.</p>
-        <p>Made with <span style="color: var(--accent-color);">♥</span> for book lovers</p>
-      </div>
+    <div class="copyright">
+      <p>© 2025 芝士读书会 Cheese Reading Club. All rights reserved.</p>
+      <p>Made with ♥ for book lovers</p>
     </div>
   </footer>
 </div>
@@ -1094,405 +864,228 @@ body.dark-mode footer {
   </div>
 </div>
 
-<!-- Firebase SDK -->
-<script type="module">
-  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
-  import { getFirestore, doc, setDoc, getDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+<script>
+// 用户数据存储（模拟数据库）
+let users = {};
+let currentUser = null;
 
-  // ========== Firebase 配置 ==========
-  // 请替换为你的 Firebase 配置
-  const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+// 初始化
+function init() {
+  loadUsers();
+  checkLogin();
+}
+
+// 加载用户数据
+function loadUsers() {
+  const saved = localStorage.getItem('cheeseUsers');
+  if (saved) {
+    users = JSON.parse(saved);
+  }
+}
+
+// 保存用户数据
+function saveUsers() {
+  localStorage.setItem('cheeseUsers', JSON.stringify(users));
+}
+
+// 检查登录状态
+function checkLogin() {
+  const savedUser = localStorage.getItem('cheeseCurrentUser');
+  if (savedUser) {
+    currentUser = JSON.parse(savedUser);
+    showMainContent();
+  } else {
+    showAuth();
+  }
+}
+
+// 显示登录界面
+function showAuth() {
+  document.getElementById('authContainer').classList.remove('hidden');
+  document.getElementById('userInfo').style.display = 'none';
+}
+
+// 显示主内容
+function showMainContent() {
+  document.getElementById('authContainer').classList.add('hidden');
+  document.getElementById('userInfo').style.display = 'flex';
+  document.getElementById('userName').textContent = currentUser.username;
+  document.getElementById('userAvatar').textContent = currentUser.username.charAt(0).toUpperCase();
+}
+
+// 标签页切换
+document.querySelectorAll('.auth-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+    
+    tab.classList.add('active');
+    const formId = tab.dataset.tab === 'login' ? 'loginForm' : 'registerForm';
+    document.getElementById(formId).classList.add('active');
+  });
+});
+
+// 登录
+document.getElementById('loginForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const username = document.getElementById('loginUsername').value.trim();
+  const password = document.getElementById('loginPassword').value;
+  const errorEl = document.getElementById('loginError');
+  
+  if (!users[username]) {
+    errorEl.textContent = '用户不存在';
+    errorEl.classList.add('show');
+    return;
+  }
+  
+  if (users[username].password !== password) {
+    errorEl.textContent = '密码错误';
+    errorEl.classList.add('show');
+    return;
+  }
+  
+  currentUser = users[username];
+  localStorage.setItem('cheeseCurrentUser', JSON.stringify(currentUser));
+  errorEl.classList.remove('show');
+  showMainContent();
+});
+
+// 注册
+document.getElementById('registerForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const username = document.getElementById('registerUsername').value.trim();
+  const email = document.getElementById('registerEmail').value.trim();
+  const password = document.getElementById('registerPassword').value;
+  const errorEl = document.getElementById('registerError');
+  
+  if (username.length < 2) {
+    errorEl.textContent = '用户名至少2个字符';
+    errorEl.classList.add('show');
+    return;
+  }
+  
+  if (password.length < 6) {
+    errorEl.textContent = '密码至少6位';
+    errorEl.classList.add('show');
+    return;
+  }
+  
+  if (users[username]) {
+    errorEl.textContent = '用户名已存在';
+    errorEl.classList.add('show');
+    return;
+  }
+  
+  users[username] = {
+    username: username,
+    email: email,
+    password: password,
+    bookData: {},
+    calendarData: []
   };
+  
+  saveUsers();
+  currentUser = users[username];
+  localStorage.setItem('cheeseCurrentUser', JSON.stringify(currentUser));
+  errorEl.classList.remove('show');
+  showMainContent();
+});
 
-  // 初始化 Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-
-  let currentUser = null;
-  let checkedDates = new Set();
-  let currentMonth = new Date().getMonth();
-  let currentYear = new Date().getFullYear();
-
-  // ========== 辅助函数 ==========
-  function showError(elementId, message) {
-    const el = document.getElementById(elementId);
-    el.textContent = message;
-    el.classList.add('show');
-    setTimeout(() => el.classList.remove('show'), 5000);
+// 退出登录
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  if (confirm('确定要退出登录吗？')) {
+    currentUser = null;
+    localStorage.removeItem('cheeseCurrentUser');
+    showAuth();
   }
+});
 
-  function showSuccess(elementId, message) {
-    const el = document.getElementById(elementId);
-    el.textContent = message;
-    el.classList.add('show');
-    setTimeout(() => el.classList.remove('show'), 3000);
+// 主题切换
+document.getElementById('themeToggle').addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  const btn = document.getElementById('themeToggle');
+  btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+});
+
+// 倒计时
+const targetDate = new Date('2025-10-25T09:00:00').getTime();
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = targetDate - now;
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById('days').textContent = days > 0 ? days : 0;
+  document.getElementById('hours').textContent = hours > 0 ? hours : 0;
+  document.getElementById('minutes').textContent = minutes > 0 ? minutes : 0;
+  document.getElementById('seconds').textContent = seconds > 0 ? seconds : 0;
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// 书籍数据
+const booksData = {
+  outsider: {
+    title: '局外人',
+    author: '阿尔贝·加缪',
+    description: '《局外人》是法国作家加缪的代表作，讲述了一个对一切都漠然处之的小职员默尔索的故事。他在母亲去世后表现冷漠，后来又无故杀人，最终被判处死刑。'
+  },
+  alchemist: {
+    title: '牧羊少年奇幻之旅',
+    author: '保罗·科埃略',
+    description: '一个名叫圣地亚哥的西班牙牧羊少年，为了追寻自己反复出现在梦中的宝藏，踏上了充满奇遇与启示的旅程。在旅途中，他遇到了各种人物，学会了倾听内心，理解世界的语言。'
   }
+};
 
-  function showAuth() {
-    document.getElementById('authContainer').classList.remove('hidden');
-    document.getElementById('userInfo').style.display = 'none';
-  }
-
-  function showMainContent(user) {
-    document.getElementById('authContainer').classList.add('hidden');
-    document.getElementById('userInfo').style.display = 'flex';
-    const username = user.email.split('@')[0];
-    document.getElementById('userName').textContent = username;
-    document.getElementById('userAvatar').textContent = username.charAt(0).toUpperCase();
-  }
-
-  // ========== 用户数据管理 ==========
-  async function loadUserData(userId) {
-    try {
-      const userDoc = await getDoc(doc(db, 'users', userId));
-      if (userDoc.exists()) {
-        const data = userDoc.data();
-        if (data.calendarData) {
-          checkedDates = new Set(data.calendarData);
-        }
-      }
-    } catch (error) {
-      console.error('加载用户数据失败:', error);
-    }
-  }
-
-  async function saveUserData() {
-    if (!currentUser) return;
-    try {
-      await updateDoc(doc(db, 'users', currentUser.uid), {
-        calendarData: Array.from(checkedDates),
-        lastUpdated: new Date().toISOString()
-      });
-    } catch (error) {
-      console.error('保存数据失败:', error);
-    }
-  }
-
-  // ========== 认证监听 ==========
-  onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      currentUser = user;
-      showMainContent(user);
-      await loadUserData(user.uid);
-      renderCalendar();
-    } else {
-      currentUser = null;
-      showAuth();
+// 书籍点击事件
+document.querySelectorAll('.book-item[data-book]').forEach(item => {
+  item.addEventListener('click', () => {
+    const bookKey = item.getAttribute('data-book');
+    const book = booksData[bookKey];
+    
+    if (book) {
+      document.getElementById('modalTitle').textContent = book.title;
+      document.getElementById('modalAuthor').textContent = `作者：${book.author}`;
+      document.getElementById('modalDescription').textContent = book.description;
+      document.getElementById('bookModal').classList.add('active');
     }
   });
+});
 
-  // ========== 标签页切换 ==========
-  document.querySelectorAll('.auth-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
-      
-      tab.classList.add('active');
-      const formId = tab.dataset.tab === 'login' ? 'loginForm' : 'registerForm';
-      document.getElementById(formId).classList.add('active');
-    });
-  });
+// 关闭弹窗
+document.getElementById('modalClose').addEventListener('click', () => {
+  document.getElementById('bookModal').classList.remove('active');
+});
 
-  // ========== 注册 ==========
-  document.getElementById('registerForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const username = document.getElementById('registerUsername').value.trim();
-    const password = document.getElementById('registerPassword').value;
-    const passwordConfirm = document.getElementById('registerPasswordConfirm').value;
-    const btn = document.getElementById('registerBtn');
-    
-    // 验证
-    if (username.length < 2 || username.length > 20) {
-      showError('registerError', '用户名长度应为2-20个字符');
-      return;
-    }
-    
-    if (password.length < 6) {
-      showError('registerError', '密码至少6位');
-      return;
-    }
-    
-    if (password !== passwordConfirm) {
-      showError('registerError', '两次密码输入不一致');
-      return;
-    }
-    
-    try {
-      btn.disabled = true;
-      btn.textContent = '注册中...';
-      
-      // 使用用户名生成邮箱（内部使用）
-      const email = `${username}@cheese-reading.local`;
-      
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      
-      // 创建用户文档
-      await setDoc(doc(db, 'users', user.uid), {
-        username: username,
-        email: email,
-        createdAt: new Date().toISOString(),
-        calendarData: [],
-        bookData: {}
-      });
-      
-      showSuccess('registerSuccess', '注册成功！正在登录...');
-      
-      setTimeout(() => {
-        document.getElementById('registerForm').reset();
-      }, 1500);
-      
-    } catch (error) {
-      console.error('注册错误:', error);
-      if (error.code === 'auth/email-already-in-use') {
-        showError('registerError', '用户名已被使用');
-      } else if (error.code === 'auth/weak-password') {
-        showError('registerError', '密码强度不够');
-      } else {
-        showError('registerError', '注册失败: ' + error.message);
-      }
-    } finally {
-      btn.disabled = false;
-      btn.textContent = '注册';
-    }
-  });
-
-  // ========== 登录 ==========
-  document.getElementById('loginForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const username = document.getElementById('loginUsername').value.trim();
-    const password = document.getElementById('loginPassword').value;
-    const btn = document.getElementById('loginBtn');
-    
-    try {
-      btn.disabled = true;
-      btn.textContent = '登录中...';
-      
-      const email = `${username}@cheese-reading.local`;
-      await signInWithEmailAndPassword(auth, email, password);
-      
-      document.getElementById('loginForm').reset();
-      
-    } catch (error) {
-      console.error('登录错误:', error);
-      if (error.code === 'auth/user-not-found') {
-        showError('loginError', '用户不存在');
-      } else if (error.code === 'auth/wrong-password') {
-        showError('loginError', '密码错误');
-      } else if (error.code === 'auth/invalid-credential') {
-        showError('loginError', '用户名或密码错误');
-      } else {
-        showError('loginError', '登录失败: ' + error.message);
-      }
-    } finally {
-      btn.disabled = false;
-      btn.textContent = '登录';
-    }
-  });
-
-  // ========== 退出登录 ==========
-  document.getElementById('logoutBtn').addEventListener('click', async () => {
-    if (confirm('确定要退出登录吗？')) {
-      try {
-        await signOut(auth);
-      } catch (error) {
-        console.error('退出失败:', error);
-        alert('退出失败，请重试');
-      }
-    }
-  });
-
-  // ========== 主题切换 ==========
-  document.getElementById('themeToggle').addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    const btn = document.getElementById('themeToggle');
-    btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-  });
-
-  // ========== 倒计时 ==========
-  const targetDate = new Date('2025-10-25T09:00:00').getTime();
-
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    document.getElementById('days').textContent = days > 0 ? days : 0;
-    document.getElementById('hours').textContent = hours > 0 ? hours : 0;
-    document.getElementById('minutes').textContent = minutes > 0 ? minutes : 0;
-    document.getElementById('seconds').textContent = seconds > 0 ? seconds : 0;
-  }
-
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
-
-  // ========== 书籍数据 ==========
-  const booksData = {
-    outsider: {
-      title: '局外人',
-      author: '阿尔贝·加缪',
-      description: '《局外人》是法国作家加缪的代表作，讲述了一个对一切都漠然处之的小职员默尔索的故事。他在母亲去世后表现冷漠，后来又无故杀人，最终被判处死刑。'
-    },
-    alchemist: {
-      title: '牧羊少年奇幻之旅',
-      author: '保罗·科埃略',
-      description: '一个名叫圣地亚哥的西班牙牧羊少年，为了追寻自己反复出现在梦中的宝藏，踏上了充满奇遇与启示的旅程。在旅途中，他遇到了各种人物，学会了倾听内心，理解世界的语言。'
-    }
-  };
-
-  // ========== 书籍点击 ==========
-  document.querySelectorAll('.book-item[data-book]').forEach(item => {
-    item.addEventListener('click', () => {
-      const bookKey = item.getAttribute('data-book');
-      const book = booksData[bookKey];
-      
-      if (book) {
-        document.getElementById('modalTitle').textContent = book.title;
-        document.getElementById('modalAuthor').textContent = `作者：${book.author}`;
-        document.getElementById('modalDescription').textContent = book.description;
-        document.getElementById('bookModal').classList.add('active');
-      }
-    });
-  });
-
-  document.getElementById('modalClose').addEventListener('click', () => {
+document.getElementById('bookModal').addEventListener('click', (e) => {
+  if (e.target.id === 'bookModal') {
     document.getElementById('bookModal').classList.remove('active');
-  });
-
-  document.getElementById('bookModal').addEventListener('click', (e) => {
-    if (e.target.id === 'bookModal') {
-      document.getElementById('bookModal').classList.remove('active');
-    }
-  });
-
-  // ========== 搜索 ==========
-  document.getElementById('searchInput').addEventListener('input', (e) => {
-    const searchTerm = e.target.value.toLowerCase();
-    const bookItems = document.querySelectorAll('.book-item');
-    
-    bookItems.forEach(item => {
-      const title = item.querySelector('.book-title')?.textContent.toLowerCase();
-      if (title && title.includes(searchTerm)) {
-        item.style.display = 'block';
-      } else {
-        item.style.display = 'none';
-      }
-    });
-  });
-
-  // ========== 日历功能 ==========
-  function renderCalendar() {
-    const calendarGrid = document.getElementById('calendarGrid');
-    const calendarMonth = document.getElementById('calendarMonth');
-    const checkedDaysDisplay = document.getElementById('checkedDays');
-    
-    if (!calendarGrid) return;
-    
-    calendarGrid.innerHTML = '';
-    
-    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
-    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-    
-    const monthNames = ['一月', '二月', '三月', '四月', '五月', '六月', 
-                        '七月', '八月', '九月', '十月', '十一月', '十二月'];
-    calendarMonth.textContent = `${currentYear}年 ${monthNames[currentMonth]}`;
-    
-    for (let i = 0; i < firstDay; i++) {
-      calendarGrid.appendChild(document.createElement('div'));
-    }
-    
-    let checkedCount = 0;
-    const today = new Date();
-    
-    for (let day = 1; day <= daysInMonth; day++) {
-      const dayElement = document.createElement('div');
-      dayElement.classList.add('calendar-day');
-      dayElement.textContent = day;
-      
-      const dateKey = `${currentYear}-${currentMonth}-${day}`;
-      
-      if (today.getFullYear() === currentYear && 
-          today.getMonth() === currentMonth && 
-          today.getDate() === day) {
-        dayElement.classList.add('today');
-      }
-      
-      if (checkedDates.has(dateKey)) {
-        dayElement.classList.add('checked');
-        checkedCount++;
-      }
-      
-      dayElement.addEventListener('click', () => {
-        if (checkedDates.has(dateKey)) {
-          checkedDates.delete(dateKey);
-        } else {
-          checkedDates.add(dateKey);
-        }
-        saveUserData();
-        renderCalendar();
-      });
-      
-      calendarGrid.appendChild(dayElement);
-    }
-    
-    checkedDaysDisplay.textContent = checkedCount;
   }
+});
 
-  document.getElementById('prevMonth')?.addEventListener('click', () => {
-    currentMonth--;
-    if (currentMonth < 0) {
-      currentMonth = 11;
-      currentYear--;
+// 搜索功能
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  const searchTerm = e.target.value.toLowerCase();
+  const bookItems = document.querySelectorAll('.book-item');
+  
+  bookItems.forEach(item => {
+    const title = item.querySelector('.book-title').textContent.toLowerCase();
+    if (title.includes(searchTerm)) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
     }
-    renderCalendar();
   });
+});
 
-  document.getElementById('nextMonth')?.addEventListener('click', () => {
-    currentMonth++;
-    if (currentMonth > 11) {
-      currentMonth = 0;
-      currentYear++;
-    }
-    renderCalendar();
-  });
+// 启动应用
+init();
 </script>
 
 </body>
-  <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyBbi-IL3KAntuR8pTFqHSUXeLL4OKJY-OM",
-    authDomain: "cheese-reading-club.firebaseapp.com",
-    projectId: "cheese-reading-club",
-    storageBucket: "cheese-reading-club.firebasestorage.app",
-    messagingSenderId: "523407834327",
-    appId: "1:523407834327:web:9f56da7734bdce051e8492",
-    measurementId: "G-5X7LV7TR4S"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
 </html>

@@ -1472,4 +1472,27 @@ body.dark-mode footer {
 </script>
 
 </body>
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBbi-IL3KAntuR8pTFqHSUXeLL4OKJY-OM",
+    authDomain: "cheese-reading-club.firebaseapp.com",
+    projectId: "cheese-reading-club",
+    storageBucket: "cheese-reading-club.firebasestorage.app",
+    messagingSenderId: "523407834327",
+    appId: "1:523407834327:web:9f56da7734bdce051e8492",
+    measurementId: "G-5X7LV7TR4S"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 </html>

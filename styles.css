@@ -47,12 +47,12 @@ body::before {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 300px;  /* 控制图标宽度 */
-  height: 250px;  /* 控制图标高度 */
+  width: 300px;
+  height: 250px;
   background-image: url('images/logo.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: contain;  /* 改为 contain，保持比例 */
+  background-size: contain;
   opacity: 0.08;
   z-index: 0;
   pointer-events: none;
@@ -161,29 +161,21 @@ header {
   transition: transform 0.1s ease-out;
 }
 
-   .logo-image {
+.logo-image {
   width: 100%;
   height: auto;
   display: block;
-  /* 圆形裁剪 */
   border-radius: 0%;
-  clip-path: circle(44% at center); /* 保持圆形显示范围 */
-  
-  
-  
-  /* 优化光影（去掉上下阴影，保留边缘立体感） */
+  clip-path: circle(44% at center);
   box-shadow: 
-    inset 0 2px 3px rgba(255,255,255,0.6), /* 内部高光（保留） */
-    inset 0 -1px 2px rgba(139, 120, 50, 0.2); /* 弱化内部暗部，避免明显下阴影 */
-  
-  /* 悬停动画 */
+    inset 0 2px 3px rgba(255,255,255,0.6),
+    inset 0 -1px 2px rgba(139, 120, 50, 0.2);
   transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   transform: scale(1.05);
 }
 
 .logo-image:hover {
   transform: scale(1.1) rotate(3deg);
-  /* 悬停时增强孔洞亮度 */
   background-image: 
     radial-gradient(circle at 30% 20%, rgba(255,255,255,0.7) 8%, transparent 9%),
     radial-gradient(circle at 70% 30%, rgba(255,255,255,0.6) 5%, transparent 6%),
@@ -191,10 +183,11 @@ header {
     radial-gradient(circle at 60% 80%, rgba(255,255,255,0.6) 6%, transparent 7%),
     radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4) 4%, transparent 5%);
   box-shadow: 
-    0 3px 10px rgba(0,0,0,0.12), /* 悬停时略微增强阴影但仍无明显上下区分 */
+    0 3px 10px rgba(0,0,0,0.12),
     inset 0 2px 3px rgba(255,255,255,0.7),
     inset 0 -1px 2px rgba(139, 120, 50, 0.3);
 }
+
 /* ========== 倒计时区域 ========== */
 .countdown-section {
   max-width: 900px;
@@ -729,7 +722,8 @@ h3 {
 }
 
 .save-note-btn {
-  margin-top: 10px;
+  display: block;
+  margin: 10px auto 0;
   padding: 10px 25px;
   background: var(--accent-color);
   color: white;

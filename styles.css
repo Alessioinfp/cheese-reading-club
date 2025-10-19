@@ -165,8 +165,6 @@ header {
   width: 100%;
   height: auto;
   display: block;
-  /* 圆形裁剪 */
-  border-radius: 50%;
   clip-path: circle(48% at center); /* 略微放大显示范围 */
   
   /* 奶酪质感背景 - 淡黄色渐变模拟奶酪颜色 */
@@ -185,10 +183,6 @@ header {
     0 5px 15px rgba(0,0,0,0.15), /* 外部阴影 */
     inset 0 2px 3px rgba(255,255,255,0.6), /* 内部高光 */
     inset 0 -2px 3px rgba(139, 120, 50, 0.3); /* 内部暗部 */
-  
-  /* 悬停动画 - 轻微放大+旋转，模拟奶酪弹性 */
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  transform: scale(1.05);
 }
 
 .logo-image:hover {

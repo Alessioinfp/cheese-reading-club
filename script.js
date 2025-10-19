@@ -323,14 +323,18 @@ function renderCalendar() {
   const calendarMonth = document.getElementById('calendarMonth');
   const checkedDaysDisplay = document.getElementById('checkedDays');
   
+  if (!calendarGrid || !calendarMonth || !checkedDaysDisplay) {
+    console.log('日历元素未找到');
+    return;
+  }
+  
   calendarGrid.innerHTML = '';
   
-  const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+  let firstDay = new Date(currentYear, currentMonth, 1).getDay();
+  // 将周日(0)转换为7,使周一为1
+  firstDay = firstDay === 0 ? 6 : firstDay - 1;
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-  
-  const monthNames = ['一月', '二月', '三月', '四月', '五月', '六月', 
-                      '七月', '八月', '九月', '十月', '十一月', '十二月'];
-  calendarMonth.textContent = `${currentYear}年 ${monthNames[currentMonth]}`;
+
   
   // 添加空白天数
   for (let i = 0; i < firstDay; i++) {

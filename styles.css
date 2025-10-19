@@ -166,7 +166,7 @@ header {
   height: auto;
   display: block;
   /* 圆形裁剪 */
-  border-radius: 50%;
+  border-radius: 0%;
   clip-path: circle(48% at center); /* 保持圆形显示范围 */
   
   /* 奶酪质感背景 - 淡黄色渐变模拟奶酪颜色 */

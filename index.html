@@ -51,22 +51,23 @@ body {
 body::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;  /* 控制图标宽度 */
+  height: 300px;  /* 控制图标高度 */
   background-image: url('images/logo.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover;
-  opacity: 0.15;
+  background-size: contain;  /* 改为 contain，保持比例 */
+  opacity: 0.08;
   z-index: 0;
   pointer-events: none;
   transition: opacity 0.5s ease;
 }
 
 body.dark-mode::before {
-  opacity: 0.05;
+  opacity: 0.03;
 }
 
 /* 渐变遮罩层 */

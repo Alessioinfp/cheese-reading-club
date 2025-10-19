@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>芝士读书会</title>
+<!-- 引入外部样式文件 -->
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+  <!-- ========== 控制按钮 ========== -->
+  <div class="controls">
+    <button class="control-btn" id="themeToggle" title="切换主题">🌙</button>
+  </div>
+
+  <!-- ========== 头部：标题 ========== -->
+  <header id="header">
+    <div class="logo-header">
+      <img src="images/芝士俱乐部.png" alt="Cheese Club Logo" class="logo-image">
+    </div>
+  </header>
+
+  <!-- ========== 倒计时区域 ========== -->
+  <div class="countdown-section">
+    <div class="countdown-card">
+      <div class="countdown-title">📅 距离下次讨论还有</div>
+      <div class="countdown-display">
+        <div class="countdown-item">
+          <div class="countdown-number" id="days">0</div>
+          <div class="countdown-label">天</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="hours">0</div>
+          <div class="countdown-label">时</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="minutes">0</div>
+          <div class="countdown-label">分</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="seconds">0</div>
+          <div class="countdown-label">秒</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 搜索区域 ========== -->
+  <div class="search-section">
+    <div class="search-box">
+      <input type="text" class="search-input" id="searchInput" placeholder="搜索往期书单...">
+      <span class="search-icon">🔍</span>
+    </div>
+  </div>
+
+  <!-- ========== 主内容区域 ========== -->
+  <div class="section">
+    
+    <!-- ========== 区域1：本期推荐 ========== -->
+    <div class="card">
+      <h2>📘 本期推荐：保罗·科埃略《牧羊少年奇幻之旅》</h2>
+      <p>"一个名叫圣地亚哥的西班牙牧羊少年，为了追寻自己反复出现在梦中的宝藏，踏上了充满奇遇与启示的旅程。"</p>
+      <p>一部用童话形式讲人生哲理的小说，不是纯冒险故事，而是一本关于"寻找自我"的精神之书。</p>
+    </div>
+
+    <!-- ========== 区域2：往期书单（书架） ========== -->
+    <h3>📚 往期书单</h3>
+    <div class="bookshelf-container">
+      <div class="bookshelf">
+        <div class="scroll-container" id="bookList">
+          <!-- 第一期书籍 -->
+          <div class="book-item" data-book="outsider">
+            <div class="reading-status" data-status="outsider">未读</div>
+            <div class="book-cover">
+              <img src="images/局外人.webp" alt="局外人封面" onerror="this.style.display='none';">
+            </div>
+            <div class="book-title">局外人</div>
+            <span class="status-badge">第一期</span>
+          </div>
+          
+          <!-- 本期书籍 -->
+          <div class="book-item" data-book="alchemist">
+            <div class="reading-status reading" data-status="alchemist">正在读</div>
+            <div class="book-cover">
+              <img src="images/牧羊少年奇幻之旅.webp" alt="牧羊少年奇幻之旅封面" onerror="this.style.display='none';">
+            </div>
+            <div class="book-title">牧羊少年奇幻之旅</div>
+            <span class="status-badge">本期</span>
+          </div>
+          
+          <!-- 待添加书籍1 -->
+          <div class="book-item">
+            <div class="book-cover">
+              敬请期待
+              <small>即将推出</small>
+            </div>
+            <div class="book-title">暂未待续</div>
+          </div>
+          
+          <!-- 待添加书籍2 -->
+          <div class="book-item">
+            <div class="book-cover">
+              敬请期待
+              <small>即将推出</small>
+            </div>
+            <div class="book-title">暂未待续</div>
+          </div>
+          
+          <!-- 待添加书籍3 -->
+          <div class="book-item">
+            <div class="book-cover">
+              敬请期待
+              <small>即将推出</small>
+            </div>
+            <div class="book-title">暂未待续</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 区域3：最新讨论 ========== -->
+    <div class="card">
+      <h2>💬 最新讨论</h2>
+      <p>下次讨论时间：2025年10月25日 周六上午 9:00</p>
+      <p>主题：人与梦想之间的关系</p>
+    </div>
+
+    <!-- ========== 打卡日历 ========== -->
+    <div class="calendar-section">
+      <div class="calendar-card">
+        <div class="calendar-header">
+          <div class="calendar-title">📖 阅读打卡日历</div>
+          <div class="calendar-nav">
+            <button class="calendar-nav-btn" id="prevMonth">◀</button>
+            <button class="calendar-nav-btn" id="nextMonth">▶</button>
+          </div>
+        </div>
+        <div id="calendarMonth" style="text-align: center; margin-bottom: 15px; font-weight: 600; color: var(--accent-color);"></div>
+        <div class="calendar-grid" id="calendarDays">
+          <div class="calendar-day-header">日</div>
+          <div class="calendar-day-header">一</div>
+          <div class="calendar-day-header">二</div>
+          <div class="calendar-day-header">三</div>
+          <div class="calendar-day-header">四</div>
+          <div class="calendar-day-header">五</div>
+          <div class="calendar-day-header">六</div>
+        </div>
+        <div class="calendar-grid" id="calendarGrid"></div>
+        <div class="calendar-stats">
+          本月已打卡 <span id="checkedDays" style="color: var(--accent-color); font-weight: bold;">0</span> 天
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ========== 页脚区域 ========== -->
+  <footer>
+    <div class="footer-content">
+      
+      <!-- 关于我们 -->
+      <div class="footer-section">
+        <h4>关于芝士读书会</h4>
+        <p style="font-size: 14px; max-width: 600px; margin: 0 auto;">
+          一个温暖的阅读社群，我们相信每本书都是一块独特的"芝士"，<br>
+          在这里找到你的声音，分享你的故事。
+        </p>
+      </div>
+
+      <!-- 版权信息 -->
+      <div class="copyright">
+        <p>© 2025 芝士读书会 Cheese Reading Club. All rights reserved.</p>
+        <p>Made with <span class="heart">♥</span> for book lovers</p>
+      </div>
+      
+    </div>
+  </footer>
+
+</div>
+
+<!-- ========== 书籍详情弹出层 ========== -->
+<div class="modal" id="bookModal">
+  <div class="modal-content">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <div class="modal-book-cover" id="modalCover">
+      <img src="" alt="书籍封面" id="modalCoverImg">
+    </div>
+    <h3 class="modal-book-title" id="modalTitle"></h3>
+    <p class="modal-book-author" id="modalAuthor"></p>
+    <p class="modal-book-description" id="modalDescription"></p>
+    <p class="modal-book-description" id="modalQuote"></p>
+    
+    <!-- 评分系统 -->
+    <div class="rating-section">
+      <div class="rating-title">📊 给这本书打分</div>
+      <div class="stars" id="ratingStars">
+        <span class="star" data-rating="1">★</span>
+        <span class="star" data-rating="2">★</span>
+        <span class="star" data-rating="3">★</span>
+        <span class="star" data-rating="4">★</span>
+        <span class="star" data-rating="5">★</span>
+      </div>
+      <div class="rating-display" id="ratingDisplay">还未评分</div>
+    </div>
+
+    <!-- 阅读进度 -->
+    <div class="progress-section">
+      <div class="rating-title">📖 阅读进度</div>
+      <div class="progress-buttons">
+        <button class="progress-btn" data-progress="not-started">未开始</button>
+        <button class="progress-btn active" data-progress="reading">正在读</button>
+        <button class="progress-btn" data-progress="finished">已读完</button>
+      </div>
+    </div>
+
+    <!-- 阅读时长 -->
+    <div class="reading-time-section">
+      <div class="rating-title">⏱️ 阅读计时器</div>
+      <div class="reading-time-display" id="readingTime">00:00:00</div>
+      <div class="time-controls">
+        <button class="time-btn" id="startTimer">开始</button>
+        <button class="time-btn stop" id="stopTimer">停止</button>
+        <button class="time-btn" id="resetTimer">重置</button>
+      </div>
+    </div>
+
+    <!-- 笔记区域 -->
+    <div class="notes-section">
+      <div class="rating-title">📝 我的笔记</div>
+      <textarea class="notes-textarea" id="bookNotes" placeholder="写下你的读书笔记和感悟..."></textarea>
+      <button class="save-note-btn" id="saveNote">保存笔记</button>
+    </div>
+  </div>
+</div>
+
+<!-- 引入外部脚本文件（放在body末尾确保DOM加载完成） -->
+<script src="script.js"></script>
+</body>
+</html>

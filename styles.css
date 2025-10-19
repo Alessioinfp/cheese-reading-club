@@ -167,7 +167,7 @@ header {
   display: block;
   /* 圆形裁剪 */
   border-radius: 0%;
-  clip-path: circle(54% at center); /* 保持圆形显示范围 */
+  clip-path: circle(40% at center); /* 保持圆形显示范围 */
   
   
   

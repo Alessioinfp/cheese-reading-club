@@ -178,13 +178,6 @@ header {
     radial-gradient(circle at 60% 80%, rgba(255,255,255,0.5) 6%, transparent 7%),
     radial-gradient(circle at 50% 50%, rgba(255,255,255,0.3) 4%, transparent 5%);
   
-  /* 立体光影效果 */
-  box-shadow: 
-    0 5px 15px rgba(0,0,0,0.15), /* 外部阴影 */
-    inset 0 2px 3px rgba(255,255,255,0.6), /* 内部高光 */
-    inset 0 -2px 3px rgba(139, 120, 50, 0.3); /* 内部暗部 */
-}
-
 .logo-image:hover {
   transform: scale(1.1) rotate(3deg);
   /* 悬停时增强孔洞亮度，模拟反光 */

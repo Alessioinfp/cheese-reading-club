@@ -177,6 +177,11 @@ header {
     radial向渐变(circle at 20% 70%, rgba(255,255,255,0.4) 7%, transparent 8%),
     radial-gradient(circle at 60% 80%, rgba(255,255,255,0.5) 6%, transparent 7%),
     radial-gradient(circle at 50% 50%, rgba(255,255,255,0.3) 4%, transparent 5%);
+/* 优化光影（去掉上下阴影，保留边缘立体感） */
+  box-shadow: 
+    0 2px 8px rgba(0,0,0,0.1), /* 弱化的整体阴影，无明显上下区分 */
+    inset 0 2px 3px rgba(255,255,255,0.6), /* 内部高光（保留） */
+    inset 0 -1px 2px rgba(139, 120, 50, 0.2); /* 弱化内部暗部，避免明显下阴影 */
   
 .logo-image:hover {
   transform: scale(1.1) rotate(3deg);

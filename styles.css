@@ -139,14 +139,14 @@ body.dark-mode::after {
 /* ========== 头部区域（视差效果） ========== */
 header {
   text-align: center;
-  padding: 18px 20px;
+  padding: 20px 20px;
   background: var(--header-bg);
   border-bottom: 3px solid var(--accent-color);
   box-shadow: 0 3px 10px var(--shadow-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 75px;
+  min-height: 100px;
   position: relative;
   overflow: hidden;
   transition: all 0.5s ease;

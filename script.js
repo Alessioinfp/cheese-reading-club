@@ -4,7 +4,7 @@ const booksData = {
     title: '局外人',
     author: '阿尔贝·加缪',
     cover: 'images/局外人.webp',
-    description: '《局外人》是法国作家加缪的代表作，讲述了一个对一切都漠然处之的小职员默尔索的故事。他在母亲去世后表现冷漠，后来又无故杀人，最终被判处死刑。',
+    description: '《局外人》是法国作家加缪的代表作，讲述了一个对一切都漠然处之的小职员默尔索的故事。他在母亲去世后表现冷漠,后来又无故杀人，最终被判处死刑。',
     quote: '"在我们的社会里，任何不在母亲葬礼上哭泣的人，都有可能被判死刑。"'
   },
   alchemist: {
@@ -185,7 +185,9 @@ function startTimer() {
   if (!timerInterval) {
     timerInterval = setInterval(() => {
       timerSeconds++;
-      readingTimeDisplay.textContent = formatTime(timerSeconds);
+      if (readingTimeDisplay) {
+        readingTimeDisplay.textContent = formatTime(timerSeconds);
+      }
       
       if (!bookData[currentBook]) bookData[currentBook] = {};
       bookData[currentBook].readingTime = timerSeconds;
@@ -204,7 +206,9 @@ function stopTimer() {
 function resetTimer() {
   stopTimer();
   timerSeconds = 0;
-  readingTimeDisplay.textContent = formatTime(timerSeconds);
+  if (readingTimeDisplay) {
+    readingTimeDisplay.textContent = formatTime(timerSeconds);
+  }
   
   if (bookData[currentBook]) {
     bookData[currentBook].readingTime = 0;
@@ -212,23 +216,25 @@ function resetTimer() {
   }
 }
 
-startTimerBtn.addEventListener('click', startTimer);
-stopTimerBtn.addEventListener('click', stopTimer);
-resetTimerBtn.addEventListener('click', resetTimer);
+if (startTimerBtn) startTimerBtn.addEventListener('click', startTimer);
+if (stopTimerBtn) stopTimerBtn.addEventListener('click', stopTimer);
+if (resetTimerBtn) resetTimerBtn.addEventListener('click', resetTimer);
 
 // 笔记保存
 const bookNotes = document.getElementById('bookNotes');
 const saveNoteBtn = document.getElementById('saveNote');
 
-saveNoteBtn.addEventListener('click', () => {
-  const note = bookNotes.value;
-  
-  if (!bookData[currentBook]) bookData[currentBook] = {};
-  bookData[currentBook].notes = note;
-  saveData();
-  
-  alert('笔记已保存！');
-});
+if (saveNoteBtn) {
+  saveNoteBtn.addEventListener('click', () => {
+    const note = bookNotes.value;
+    
+    if (!bookData[currentBook]) bookData[currentBook] = {};
+    bookData[currentBook].notes = note;
+    saveData();
+    
+    alert('笔记已保存！');
+  });
+}
 
 // 数据持久化
 function saveData() {
@@ -278,19 +284,23 @@ function loadBookData(bookKey) {
   }
   
   // 加载阅读时长
-  if (data.readingTime) {
+  if (data.readingTime && readingTimeDisplay) {
     timerSeconds = data.readingTime;
     readingTimeDisplay.textContent = formatTime(timerSeconds);
   } else {
     timerSeconds = 0;
-    readingTimeDisplay.textContent = formatTime(0);
+    if (readingTimeDisplay) {
+      readingTimeDisplay.textContent = formatTime(0);
+    }
   }
   
   // 加载笔记
-  if (data.notes) {
-    bookNotes.value = data.notes;
-  } else {
-    bookNotes.value = '';
+  if (bookNotes) {
+    if (data.notes) {
+      bookNotes.value = data.notes;
+    } else {
+      bookNotes.value = '';
+    }
   }
 }
 
@@ -298,20 +308,25 @@ function loadBookData(bookKey) {
 const searchInput = document.getElementById('searchInput');
 const bookList = document.getElementById('bookList');
 
-searchInput.addEventListener('input', (e) => {
-  const searchTerm = e.target.value.toLowerCase();
-  const allBooks = bookList.querySelectorAll('.book-item');
-  
-  allBooks.forEach(book => {
-    const title = book.querySelector('.book-title').textContent.toLowerCase();
-    if (title.includes(searchTerm)) {
-      book.style.display = 'block';
-      book.style.animation = 'fadeIn 0.5s ease';
-    } else {
-      book.style.display = 'none';
-    }
+if (searchInput && bookList) {
+  searchInput.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    const allBooks = bookList.querySelectorAll('.book-item');
+    
+    allBooks.forEach(book => {
+      const titleElement = book.querySelector('.book-title');
+      if (titleElement) {
+        const title = titleElement.textContent.toLowerCase();
+        if (title.includes(searchTerm)) {
+          book.style.display = 'block';
+          book.style.animation = 'fadeIn 0.5s ease';
+        } else {
+          book.style.display = 'none';
+        }
+      }
+    });
   });
-});
+}
 
 // 打卡日历
 let currentMonth = new Date().getMonth();
@@ -324,21 +339,25 @@ function renderCalendar() {
   const checkedDaysDisplay = document.getElementById('checkedDays');
   
   if (!calendarGrid || !calendarMonth || !checkedDaysDisplay) {
-    console.log('日历元素未找到');
+    console.error('日历元素未找到');
     return;
   }
   
   calendarGrid.innerHTML = '';
   
+  // 获取当月第一天是星期几（0=周日, 1=周一, ...）
   let firstDay = new Date(currentYear, currentMonth, 1).getDay();
-  // 将周日(0)转换为7,使周一为1
-  firstDay = firstDay === 0 ? 6 : firstDay - 1;
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-
   
-  // 添加空白天数
+  const monthNames = ['一月', '二月', '三月', '四月', '五月', '六月', 
+                      '七月', '八月', '九月', '十月', '十一月', '十二月'];
+  calendarMonth.textContent = `${currentYear}年 ${monthNames[currentMonth]}`;
+  
+  // 添加空白天数（HTML中星期顺序是：日一二三四五六）
   for (let i = 0; i < firstDay; i++) {
     const emptyDay = document.createElement('div');
+    emptyDay.classList.add('calendar-day');
+    emptyDay.style.visibility = 'hidden';
     calendarGrid.appendChild(emptyDay);
   }
   
@@ -384,23 +403,30 @@ function renderCalendar() {
   checkedDaysDisplay.textContent = checkedCount;
 }
 
-document.getElementById('prevMonth').addEventListener('click', () => {
-  currentMonth--;
-  if (currentMonth < 0) {
-    currentMonth = 11;
-    currentYear--;
-  }
-  renderCalendar();
-});
+const prevMonthBtn = document.getElementById('prevMonth');
+const nextMonthBtn = document.getElementById('nextMonth');
 
-document.getElementById('nextMonth').addEventListener('click', () => {
-  currentMonth++;
-  if (currentMonth > 11) {
-    currentMonth = 0;
-    currentYear++;
-  }
-  renderCalendar();
-});
+if (prevMonthBtn) {
+  prevMonthBtn.addEventListener('click', () => {
+    currentMonth--;
+    if (currentMonth < 0) {
+      currentMonth = 11;
+      currentYear--;
+    }
+    renderCalendar();
+  });
+}
+
+if (nextMonthBtn) {
+  nextMonthBtn.addEventListener('click', () => {
+    currentMonth++;
+    if (currentMonth > 11) {
+      currentMonth = 0;
+      currentYear++;
+    }
+    renderCalendar();
+  });
+}
 
 function saveCalendarData() {
   try {
@@ -425,3 +451,5 @@ function loadCalendarData() {
 loadData();
 loadCalendarData();
 renderCalendar();
+
+console.log('脚本加载完成，日历已初始化');

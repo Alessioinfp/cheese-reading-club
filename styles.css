@@ -1,4 +1,4 @@
-/* ========== 全局样式 ========== */
+e/* ========== 全局样式 ========== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,7 +12,7 @@
   --text-secondary: #7a6a5b;
   --accent-color: #d4a94f;
   --header-bg: linear-gradient(135deg, #faf6ef 0%, #f5eedb 100%);
-  --card-border: rgba(245, 232, 199, 0.8);
+  --card-border: rgba(25, 232, 199, 0.8);
   --shadow-color: rgba(0, 0, 0, 0.08);
   --bookshelf-color: #8b6f47;
 }
@@ -584,21 +584,7 @@ h3 {
   transform: rotate(90deg);
 }
 
-.modal-book-cover {
-  width: 100%;
-  max-width: 300px;
-  height: 400px;
-  margin: 0 auto 20px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px var(--shadow-color);
-}
 
-.modal-book-cover img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 
 .modal-book-title {
   font-size: 24px;

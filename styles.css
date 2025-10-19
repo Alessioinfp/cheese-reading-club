@@ -48,7 +48,7 @@ body::before {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 300px;  /* 控制图标宽度 */
-  height: 300px;  /* 控制图标高度 */
+  height: 350px;  /* 控制图标高度 */
   background-image: url('images/logo.png');
   background-repeat: no-repeat;
   background-position: center center;

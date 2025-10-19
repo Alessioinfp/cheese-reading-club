@@ -585,6 +585,7 @@ h3 {
 }
 
 .modal-book-cover {
+  display: none;  /* 隐藏封面 */
   width: 100%;
   max-width: 300px;
   height: 400px;

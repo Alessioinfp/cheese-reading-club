@@ -232,7 +232,14 @@ if (saveNoteBtn) {
     bookData[currentBook].notes = note;
     saveData();
     
-    alert('笔记已保存！');
+    // 显示保存成功提示（替代弹窗）
+    saveNoteBtn.textContent = '✓ 已保存';
+    saveNoteBtn.style.background = '#4CAF50';
+    
+    setTimeout(() => {
+      saveNoteBtn.textContent = '保存笔记';
+      saveNoteBtn.style.background = 'var(--accent-color)';
+    }, 2000);
   });
 }
 

@@ -747,53 +747,6 @@ h3 {
   box-shadow: 0 4px 12px rgba(212, 169, 79, 0.3);
 }
 
-/* ========== 阅读时长 ========== */
-.reading-time-section {
-  margin: 20px 0;
-  padding: 15px;
-  background: rgba(76, 175, 80, 0.1);
-  border-radius: 10px;
-  text-align: center;
-}
-
-.reading-time-display {
-  font-size: 32px;
-  font-weight: bold;
-  color: #4CAF50;
-  margin: 10px 0;
-}
-
-.time-controls {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.time-btn {
-  padding: 8px 15px;
-  background: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  font-size: 13px;
-  transition: all 0.3s ease;
-}
-
-.time-btn:hover {
-  background: #45a049;
-  transform: translateY(-2px);
-}
-
-.time-btn.stop {
-  background: #f44336;
-}
-
-.time-btn.stop:hover {
-  background: #da190b;
-}
-
 /* ========== 打卡日历 ========== */
 .calendar-section {
   margin: 30px 0;

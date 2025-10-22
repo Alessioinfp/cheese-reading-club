@@ -112,7 +112,6 @@ const modalTitle = document.getElementById('modalTitle');
 const modalAuthor = document.getElementById('modalAuthor');
 const modalDescription = document.getElementById('modalDescription');
 const modalQuote = document.getElementById('modalQuote');
-const modalCoverImg = document.getElementById('modalCoverImg');
 
 bookItems.forEach(item => {
   item.addEventListener('click', () => {
@@ -127,7 +126,6 @@ bookItems.forEach(item => {
       modalQuote.textContent = book.quote;
       modalQuote.style.fontStyle = 'italic';
       modalQuote.style.color = 'var(--accent-color)';
-      modalCoverImg.src = book.cover;
       modal.classList.add('active');
       
       // 加载保存的数据

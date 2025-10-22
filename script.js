@@ -53,8 +53,6 @@ const booksData = {
 // 存储数据
 let bookData = {};
 let currentBook = '';
-let timerInterval = null;
-let timerSeconds = 0;
 
 // 主题切换
 const themeToggle = document.getElementById('themeToggle');
@@ -140,13 +138,11 @@ bookItems.forEach(item => {
 
 modalClose.addEventListener('click', () => {
   modal.classList.remove('active');
-  stopTimer();
 });
 
 modal.addEventListener('click', (e) => {
   if (e.target === modal) {
     modal.classList.remove('active');
-    stopTimer();
   }
 });
 
@@ -202,53 +198,6 @@ progressBtns.forEach(btn => {
   });
 });
 
-// 阅读计时器
-const startTimerBtn = document.getElementById('startTimer');
-const stopTimerBtn = document.getElementById('stopTimer');
-const resetTimerBtn = document.getElementById('resetTimer');
-const readingTimeDisplay = document.getElementById('readingTime');
-
-function formatTime(seconds) {
-  const hrs = Math.floor(seconds / 3600);
-  const mins = Math.floor((seconds % 3600) / 60);
-  const secs = seconds % 60;
-  return `${String(hrs).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-}
-
-function startTimer() {
-  if (!timerInterval) {
-    timerInterval = setInterval(() => {
-      timerSeconds++;
-      readingTimeDisplay.textContent = formatTime(timerSeconds);
-      
-      if (!bookData[currentBook]) bookData[currentBook] = {};
-      bookData[currentBook].readingTime = timerSeconds;
-      saveData();
-    }, 1000);
-  }
-}
-
-function stopTimer() {
-  if (timerInterval) {
-    clearInterval(timerInterval);
-    timerInterval = null;
-  }
-}
-
-function resetTimer() {
-  stopTimer();
-  timerSeconds = 0;
-  readingTimeDisplay.textContent = formatTime(timerSeconds);
-  
-  if (bookData[currentBook]) {
-    bookData[currentBook].readingTime = 0;
-    saveData();
-  }
-}
-
-startTimerBtn.addEventListener('click', startTimer);
-stopTimerBtn.addEventListener('click', stopTimer);
-resetTimerBtn.addEventListener('click', resetTimer);
 
 // 笔记保存
 const bookNotes = document.getElementById('bookNotes');
@@ -309,15 +258,6 @@ function loadBookData(bookKey) {
         btn.classList.add('active');
       }
     });
-  }
-  
-  // 加载阅读时长
-  if (data.readingTime) {
-    timerSeconds = data.readingTime;
-    readingTimeDisplay.textContent = formatTime(timerSeconds);
-  } else {
-    timerSeconds = 0;
-    readingTimeDisplay.textContent = formatTime(0);
   }
   
   // 加载笔记

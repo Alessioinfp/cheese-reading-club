@@ -126,9 +126,9 @@ bookItems.forEach(item => {
       modalQuote.textContent = book.quote;
       modalQuote.style.fontStyle = 'italic';
       modalQuote.style.color = 'var(--accent-color)';
+      // 每次打开前先重置，再加载该书数据，避免状态串联
+      resetModalState();
       modal.classList.add('active');
-      
-      // 加载保存的数据
       loadBookData(bookKey);
     }
   });
@@ -136,11 +136,13 @@ bookItems.forEach(item => {
 
 modalClose.addEventListener('click', () => {
   modal.classList.remove('active');
+  resetModalState();
 });
 
 modal.addEventListener('click', (e) => {
   if (e.target === modal) {
     modal.classList.remove('active');
+    resetModalState();
   }
 });
 
@@ -210,6 +212,21 @@ saveNoteBtn.addEventListener('click', () => {
   
   alert('笔记已保存！');
 });
+
+// 重置弹窗状态，避免不同书籍之间相互影响
+function resetModalState() {
+  // 评分清空
+  stars.forEach(s => s.classList.remove('active'));
+  ratingDisplay.textContent = '还未评分';
+
+  // 进度重置为未开始
+  progressBtns.forEach(btn => btn.classList.remove('active'));
+  const notStartedBtn = Array.from(progressBtns).find(b => b.getAttribute('data-progress') === 'not-started');
+  if (notStartedBtn) notStartedBtn.classList.add('active');
+
+  // 笔记清空
+  bookNotes.value = '';
+}
 
 // 数据持久化
 function saveData() {

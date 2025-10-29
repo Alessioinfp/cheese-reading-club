@@ -48,6 +48,12 @@ const booksData = {
     description: '《被讨厌的勇气》是日本作家岸见一郎的代表作，探讨了人际关系中的勇气、自由和独立。本书通过对话的形式，揭示了人们如何通过改变自己的思维方式，实现自我成长和幸福。',
     quote: '"勇气不是不害怕，而是即使害怕，也要继续前行。"'
   },
+  zoo: {
+    title: '动物园',
+    author:'乙一',
+    description: '日本作家乙一的短篇小说集，书中收录了多篇风格各异的短篇故事。通过悬疑、惊悚与感人的情节，作品探讨了人性、孤独与人际关系的微妙情感。乙一擅长用细腻的笔触描写人物心理，故事既有紧张的推理感，也常带有温暖或令人深思的结局。',
+    quote: '"妈妈要杀我的话，她会怎么下手呢？或许是老一套地拿硬物敲我的头；或许是另一个老一套地掐紧我的脖子；还是把我从公寓阳台推下去，再伪装成自杀？"'
+  },
 };
 
 // 存储数据
@@ -77,7 +83,7 @@ window.addEventListener('scroll', () => {
 });
 
 // 倒计时功能
-const targetDate = new Date('2025-10-25T09:00:00').getTime();
+const targetDate = new Date('2025-11-08T09:00:00').getTime();s
 
 function updateCountdown() {
   const now = new Date().getTime();

@@ -83,7 +83,7 @@ window.addEventListener('scroll', () => {
 });
 
 // 倒计时功能
-const targetDate = new Date('2025-11-08T09:00:00').getTime();s
+const targetDate = new Date('2025-11-08T09:00:00').getTime();
 
 function updateCountdown() {
   const now = new Date().getTime();
@@ -289,16 +289,16 @@ function loadBookData(bookKey) {
   }
 }
 
-// 搜索功能
+// 搜索功能（支持多个书架列表）
 const searchInput = document.getElementById('searchInput');
-const bookList = document.getElementById('bookList');
 
 searchInput.addEventListener('input', (e) => {
   const searchTerm = e.target.value.toLowerCase();
-  const allBooks = bookList.querySelectorAll('.book-item');
+  const allBooks = document.querySelectorAll('.book-item');
   
   allBooks.forEach(book => {
-    const title = book.querySelector('.book-title').textContent.toLowerCase();
+    const titleEl = book.querySelector('.book-title');
+    const title = titleEl ? titleEl.textContent.toLowerCase() : '';
     if (title.includes(searchTerm)) {
       book.style.display = 'block';
       book.style.animation = 'fadeIn 0.5s ease';

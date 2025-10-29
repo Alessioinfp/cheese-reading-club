@@ -728,6 +728,8 @@ h3 {
   padding: 24px;
   box-shadow: 0 4px 12px var(--shadow-color);
   border: 1px solid var(--card-border);
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .calendar-header {
@@ -984,5 +986,20 @@ body.dark-mode footer {
 
   .calendar-day {
     font-size: 12px;
+  }
+}
+
+/* 桌面端优化：收敛日历尺寸，避免占满屏幕 */
+@media (min-width: 1024px) {
+  .calendar-card {
+    max-width: 680px;
+  }
+  .calendar-grid {
+    justify-content: center;
+  }
+  .calendar-day {
+    aspect-ratio: auto;
+    height: 70px;
+    font-size: 13px;
   }
 }
